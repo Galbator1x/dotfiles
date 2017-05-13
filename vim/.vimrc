@@ -192,8 +192,7 @@ let g:syntastic_check_on_wq = 0
 
 let g:vim_json_syntax_conceal = 0
 
-" let g:lexical#spelllang = ['en_us', 'ru_ru'] " cannot find word list ru.utf
-let g:lexical#spelllang = ['en_us']
+let g:lexical#spelllang = ['en_us', 'ru_ru']
 
 let g:easytags_async = 1
 
@@ -310,7 +309,7 @@ autocmd FileType python nnoremap <Leader>i :!isort %<CR><CR>
     augroup SPACEVIM_ASYNCRUN
         autocmd!
         " Automatically open the quickfix window
-        autocmd User AsyncRunStart call asyncrun#quickfix_toggle(10, 1)
+        autocmd User AsyncRunStart call asyncrun#quickfix_toggle(6, 1)
     augroup END
 
     function! s:compile_and_run()
@@ -318,7 +317,7 @@ autocmd FileType python nnoremap <Leader>i :!isort %<CR><CR>
         if &filetype == 'sh'
            exec "AsyncRun! time bash %"
         elseif &filetype == 'python'
-           exec "AsyncRun! time python3.6 %"
+           exec "AsyncRun! python3 %"
         endif
     endfunction
 " }
