@@ -2,6 +2,7 @@ alias p='sudo sh pycharm.sh'
 alias i='sudo sh idea.sh'
 
 alias sorti='isort -rc .'
+alias y='yandex-disk'
 
 alias va='source ../activate'
 alias vshop='source ~/projects/venv/shop/bin/activate'
