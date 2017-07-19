@@ -169,6 +169,7 @@ esac
 
 export PS1='$(__git_ps1) \W\$ '
 
+set -o vi
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
