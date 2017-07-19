@@ -19,6 +19,7 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
 
     " Search and navigation
     " Plug 'dyng/ctrlsf.vim' " Powered code search and view tool
+    " Plug 'mileszs/ack.vim' " Search tool (need to install ack-grep)
     Plug 'jlanzarotta/bufexplorer'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'jasoncodes/ctrlp-modified.vim'
@@ -30,7 +31,7 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
     " Autocomplete
     Plug 'jiangmiao/auto-pairs'
     Plug 'tpope/vim-unimpaired'
-    " Plug 'Valloric/YouCompleteMe'
+    Plug 'Valloric/YouCompleteMe'
     Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
     Plug 'reedes/vim-lexical' " Build on Vim’s spell/thes/dict completion
 
@@ -73,6 +74,7 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
     " Plug 'wlangstroth/vim-racket'
 
     " Python
+    Plug 'python-mode/python-mode'
 
     " Clojure
     " Plug 'guns/vim-clojure-highlight'
@@ -106,6 +108,7 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
 
     " Themes
     Plug 'nanotech/jellybeans.vim'
+    " Plug 'ajmwagar/vim-deus'
 
     " Other
     " Plug 'nathanaelkane/vim-indent-guides' " visually displaying indent levels in code
@@ -169,6 +172,7 @@ set shiftwidth=4
 
 set t_Co=256
 colorscheme jellybeans
+" colors deus
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -292,6 +296,21 @@ autocmd Filetype css setlocal ts=2 sts=2 sw=2 et autoindent
 
 autocmd FileType python nnoremap <Leader>i :!isort %<CR><CR>
 
+set completeopt-=preview
+
+let g:pymode_lint_unmodified = 1
+let g:pymode_lint_checkers = ['pyflakes']
+let g:pymode_lint_write = 1
+let g:pymode_python = 'python3'
+let g:pymode_options_max_line_length = 90
+let g:pymode_options_colorcolumn = 0
+let g:pymode_indent = 1
+let g:pymode_folding = 0
+let g:pymode_run = 0
+let g:pymode_rope_vim_completion = 0
+let g:pymode_syntax_highlight_self = 0
+let g:pymode_breakpoint = 0
+
 " { Vim-test
     let test#strategy = "dispatch"
     let test#python#runner = 'pytest'
@@ -325,6 +344,32 @@ autocmd FileType python nnoremap <Leader>i :!isort %<CR><CR>
 nnoremap <leader>fj :vertical resize 60<CR>
 nnoremap <leader>fk :vertical resize 65<CR>
 nnoremap <leader>fl :vertical resize 70<CR>
+nnoremap <silent> <leader>q :close<CR>
+
+" select last paste in visual mode
+nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+fun! DetectTemplate()
+  let n = 1
+  while n < line("$")
+    if getline(n) =~ '{%' || getline(n) =~ '{{'
+      set ft=htmldjango
+      return
+    endif
+    let n = n + 1
+  endwhile
+  set ft=html "default html
+endfun
+autocmd BufNewFile,BufRead *.html call DetectTemplate()
+
+" let b:surround_{char2nr("v")} = "{{ \r }}"
+" let b:surround_{char2nr("{")} = "{{ \r }}"
+" let b:surround_{char2nr("%")} = "{% \r %}"
+" let b:surround_{char2nr("b")} = "{% block \1block name: \1 %}\r{% endblock \1\1 %}"
+" let b:surround_{char2nr("i")} = "{% if \1condition: \1 %}\r{% endif %}"
+" let b:surround_{char2nr("w")} = "{% with \1with: \1 %}\r{% endwith %}"
+" let b:surround_{char2nr("f")} = "{% for \1for loop: \1 %}\r{% endfor %}"
+" let b:surround_{char2nr("c")} = "{% comment %}\r{% endcomment %}"
 
 if filereadable(expand("~/.vimrc.after"))
   source ~/.vimrc.after
