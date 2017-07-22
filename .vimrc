@@ -72,6 +72,7 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
     " Plug 'editorconfig/editorconfig-vim' " http://editorconfig.org/
     Plug 'mattn/emmet-vim'
     " Plug 'wlangstroth/vim-racket'
+    Plug 'chr4/nginx.vim'
 
     " Python
     Plug 'python-mode/python-mode'
