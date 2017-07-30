@@ -75,7 +75,7 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
     Plug 'chr4/nginx.vim'
 
     " Python
-    Plug 'python-mode/python-mode'
+    " Plug 'python-mode/python-mode'
 
     " Clojure
     " Plug 'guns/vim-clojure-highlight'
@@ -299,18 +299,18 @@ autocmd FileType python nnoremap <Leader>i :!isort %<CR><CR>
 
 set completeopt-=preview
 
-let g:pymode_lint_unmodified = 1
-let g:pymode_lint_checkers = ['pyflakes']
-let g:pymode_lint_write = 1
-let g:pymode_python = 'python3'
-let g:pymode_options_max_line_length = 90
-let g:pymode_options_colorcolumn = 0
-let g:pymode_indent = 1
-let g:pymode_folding = 0
-let g:pymode_run = 0
-let g:pymode_rope_vim_completion = 0
-let g:pymode_syntax_highlight_self = 0
-let g:pymode_breakpoint = 0
+" let g:pymode_lint_unmodified = 1
+" let g:pymode_lint_checkers = ['pyflakes']
+" let g:pymode_lint_write = 1
+" let g:pymode_python = 'python3'
+" let g:pymode_options_max_line_length = 90
+" let g:pymode_options_colorcolumn = 0
+" let g:pymode_indent = 1
+" let g:pymode_folding = 0
+" let g:pymode_run = 0
+" let g:pymode_rope_vim_completion = 0
+" let g:pymode_syntax_highlight_self = 0
+" let g:pymode_breakpoint = 0
 
 " { Vim-test
     let test#strategy = "dispatch"
