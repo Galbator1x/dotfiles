@@ -1,9 +1,10 @@
 import os
+import socket
 
 from fabric.api import cd, env, prefix, run, sudo
 
-env.hosts = ['testing']
-env.password = 'd47f17d82b7eaaeb9510d420'
+env.hosts = [socket.gethostname()]
+env.password = os.getenv('PASSWORD')
 env.base_dir = '/home/{}'.format(env.user)
 env.ln_template = 'ln -s {} {}'
 env.dotfiles_path = '{base_dir}/projects/dotfiles'.format(**env)
