@@ -285,10 +285,6 @@ let g:auto_save_events = ["InsertLeave", "TextChanged"]
 let g:livedown_autorun = 0
 let g:livedown_open = 1
 
-" let g:ycm_python_binary_path = '/usr/bin/python3.6'
-" let g:ycm_server_keep_logfiles = 1
-" let g:ycm_server_log_level = 'debug'
-
 autocmd FileType python setlocal ts=4 sts=4 sw=4 et autoindent
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 et autoindent
 autocmd Filetype htmldjango setlocal ts=2 sts=2 sw=2 et autoindent
@@ -362,15 +358,6 @@ fun! DetectTemplate()
   set ft=html "default html
 endfun
 autocmd BufNewFile,BufRead *.html call DetectTemplate()
-
-" let b:surround_{char2nr("v")} = "{{ \r }}"
-" let b:surround_{char2nr("{")} = "{{ \r }}"
-" let b:surround_{char2nr("%")} = "{% \r %}"
-" let b:surround_{char2nr("b")} = "{% block \1block name: \1 %}\r{% endblock \1\1 %}"
-" let b:surround_{char2nr("i")} = "{% if \1condition: \1 %}\r{% endif %}"
-" let b:surround_{char2nr("w")} = "{% with \1with: \1 %}\r{% endwith %}"
-" let b:surround_{char2nr("f")} = "{% for \1for loop: \1 %}\r{% endfor %}"
-" let b:surround_{char2nr("c")} = "{% comment %}\r{% endcomment %}"
 
 if filereadable(expand("~/.vimrc.after"))
   source ~/.vimrc.after
