@@ -52,6 +52,7 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
     " Plug 'SirVer/ultisnips' "The ultimate snippet solution for Vim
     " Plug 'w0rp/ale' " Asynchronous Lint Engine
     Plug 'skywind3000/asyncrun.vim' " Run Async Shell Commands
+    Plug 'editorconfig/editorconfig-vim'
 
     " Tools integration
     " Plug 'hashivim/vim-vagrant'
@@ -76,6 +77,7 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
 
     " Python
     " Plug 'python-mode/python-mode'
+    Plug 'nvie/vim-flake8'
 
     " Clojure
     " Plug 'guns/vim-clojure-highlight'
@@ -259,6 +261,9 @@ nmap <Leader>y :.w! ~/.vbuf<CR>
 " "paste the contents of the buffer file
 nmap <Leader>p :r ~/.vbuf<CR>
 
+" Blockwise Visual
+command! Vb normal! <C-v>
+
 " Map ctrl-movement keys to window switching
 map <C-k> <C-w><Up>
 map <C-j> <C-w><Down>
@@ -345,6 +350,8 @@ nnoremap <silent> <leader>q :close<CR>
 
 " select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 
 fun! DetectTemplate()
   let n = 1
