@@ -1,3 +1,5 @@
 .vim/backups
 .vim/plugged
 .vim/autoload
+
+__pycache__/
