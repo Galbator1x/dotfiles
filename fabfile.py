@@ -118,6 +118,7 @@ def install_mailcloud():
     sudo('apt-get update')
     sudo('apt-get install -y mail.ru-cloud')
 
+
 def install_torrent_client():
     sudo('apt-get install -y deluge')
 
