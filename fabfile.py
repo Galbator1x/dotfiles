@@ -62,7 +62,7 @@ def install_system_libs():
 def clone_dotfiles():
     run('mkdir -p {base_dir}/projects'.format(**env))
     with cd('{base_dir}/projects'.format(**env)):
-        run('git clone https://github.com/Galbator1x/dotfiles.git')
+        run('git clone git@github.com:Galbator1x/dotfiles.git')
 
 
 def symlink_configs():
