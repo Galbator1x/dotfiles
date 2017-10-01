@@ -247,7 +247,7 @@ let NERDTreeIgnore = ['\.pyc$', '\.retry$', '^activate', '^easy_install', '^pip$
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 nmap <silent> // :nohlsearch<CR>
-noremap ,hl :set hlsearch! hlsearch?<CR>
+noremap <leader>/ :set hlsearch! hlsearch?<CR>
 
 " Allows you to enter sudo pass and save the file
 " " when you forgot to open your file with sudo
