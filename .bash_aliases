@@ -23,6 +23,7 @@ alias cdb='cd ~/projects/blago/'
 alias cdbp='cd ~/projects/brand_protection/bp_web/bp_web/'
 alias cdd='cd ~/projects/devman/'
 alias cddot='cd ~/projects/dotfiles/'
+alias cdmkv='cd ~/Videos/mkv/'
 
 alias pstart='sudo /etc/init.d/postgresql start'
 alias pstop='sudo /etc/init.d/postgresql stop'

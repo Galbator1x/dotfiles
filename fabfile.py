@@ -56,7 +56,7 @@ def install_system_libs():
     sudo('sudo apt-get -y install zlib1g-dev build-essential libssl-dev libffi-dev '
          'python3.6 python3.6-dev python3.6-venv language-pack-ru chrpath libxft-dev '
          'libfreetype6 libfreetype6-dev libfontconfig1 libfontconfig1-dev '
-         'exuberant-ctags python python-dev python3-dev python-pip ')
+         'exuberant-ctags python python-dev python3-dev python-pip cmake ')
 
 
 def clone_dotfiles():
