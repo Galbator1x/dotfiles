@@ -29,8 +29,9 @@ def setup():
     install_tweaks()
     install_icons()
     install_libre()
-    install_vlc()
+    # install_vlc()
     install_redshift()
+    install_heroku()
     cleanup_system()
 
 
@@ -148,6 +149,10 @@ def install_vlc():
 def install_redshift():
     sudo('apt-get install -y gtk-redshift')
     run('gtk-redshift -l 56:92 -t 5500:3400 & exit')
+
+
+def install_heroku():
+    run('wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh')
 
 
 def cleanup_system():
