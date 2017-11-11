@@ -152,7 +152,7 @@ def install_redshift():
 
 
 def install_heroku():
-    run('wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh')
+    pass
 
 
 def cleanup_system():

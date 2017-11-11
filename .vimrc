@@ -366,6 +366,16 @@ fun! DetectTemplate()
 endfun
 autocmd BufNewFile,BufRead *.html call DetectTemplate()
 
+" search for the current selection via *
+xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+function! s:VSetSearch(cmdtype)
+    let temp = @s
+    norm! gv"sy
+    let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+    let @s = temp
+endfunction
+
 if filereadable(expand("~/.vimrc.after"))
   source ~/.vimrc.after
 endif
