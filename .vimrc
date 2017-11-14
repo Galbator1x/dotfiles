@@ -111,7 +111,6 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
 
     " Themes
     Plug 'nanotech/jellybeans.vim'
-    " Plug 'ajmwagar/vim-deus'
 
     " Other
     " Plug 'nathanaelkane/vim-indent-guides' " visually displaying indent levels in code
@@ -175,7 +174,6 @@ set shiftwidth=4
 
 set t_Co=256
 colorscheme jellybeans
-" colors deus
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.

@@ -11,7 +11,6 @@ env.dotfiles_path = '{base_dir}/projects/dotfiles'.format(**env)
 env.phantomjs = 'phantomjs-2.1.1-linux-x86_64'
 
 # TODO node,
-# TODO fix inserting sudo in terminal
 
 def setup():
     update_system()
@@ -29,9 +28,9 @@ def setup():
     install_tweaks()
     install_icons()
     install_libre()
-    # install_vlc()
     install_redshift()
     install_heroku()
+    configuring_system()
     cleanup_system()
 
 
@@ -140,10 +139,6 @@ def install_libre():
     sudo('add-apt-repository -y ppa:libreoffice/ppa')
     sudo('apt-get update')
     sudo('apt-get install -y libreoffice')
-
-
-def install_vlc():
-    sudo('apt-get install -y vlc')
 
 
 def install_redshift():
