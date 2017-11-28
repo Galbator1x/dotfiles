@@ -12,6 +12,8 @@ alias pmmk='python manage.py makemigrations'
 alias pmu='python manage.py upgrade'
 alias pmuser='python manage.py createsuperuser'
 
+alias kkpdbreset='rm db.sqlite3 && rm -rf problem_solver/migrations/ && pmm && pmmk problem_solver && pmm'
+
 alias cd1='cd ..'
 alias cd2='cd ../../'
 alias cd3='cd ../../../'

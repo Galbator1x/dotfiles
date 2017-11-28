@@ -315,7 +315,7 @@ set completeopt-=preview
     let test#strategy = "dispatch"
     let test#python#runner = 'pytest'
 
-    nmap <silent> <leader>rt :TestSuite<CR>
+    nmap <silent> <leader>r :TestSuite<CR>
     nmap <silent> <leader>rf :TestFile<CR>
     nmap <silent> <leader>rn :TestNearest<CR>
     nmap <silent> <leader>rr :TestLast<CR>
@@ -345,6 +345,7 @@ nnoremap <leader>fj :vertical resize 60<CR>
 nnoremap <leader>fk :vertical resize 65<CR>
 nnoremap <leader>fl :vertical resize 70<CR>
 nnoremap <silent> <leader>q :close<CR>
+vnoremap <C-c> "+y
 
 " select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
