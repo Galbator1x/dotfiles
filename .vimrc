@@ -18,13 +18,13 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
     Plug '907th/vim-auto-save'
 
     " Search and navigation
-    " Plug 'dyng/ctrlsf.vim' " Powered code search and view tool
+    Plug 'dyng/ctrlsf.vim' " Powered code search and view tool
     " Plug 'mileszs/ack.vim' " Search tool (need to install ack-grep)
     Plug 'jlanzarotta/bufexplorer'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     Plug 'scrooloose/nerdtree'
-    " Plug 'godlygeek/tabular' " Text filtering and alignment
+    Plug 'godlygeek/tabular' " Text filtering and alignment
     " Plug 'jeetsukumaran/vim-buffergator' " Vim plugin to list, select and switch between buffers
     " Plug 'tpope/vim-projectionist' " Provides granular project configuration
 
@@ -34,6 +34,7 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
     " Plug 'Valloric/YouCompleteMe'
     Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
     Plug 'reedes/vim-lexical' " Build on Vim’s spell/thes/dict completion
+    " Plug 'honza/vim-snippets'
 
     " Language client
     " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
@@ -97,7 +98,7 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
     Plug 'tpope/vim-rails'
     Plug 'vim-ruby/vim-ruby'
     Plug 'tpope/vim-endwise'
-    " Plug 'sunaku/vim-ruby-minitest'
+    " Plug 'sunaku/vim-ruby-minitest' " highlighting & completion for MiniTest
     Plug 'thoughtbot/vim-rspec'
     Plug 'tpope/vim-rvm'
     Plug 'p0deje/vim-ruby-interpolation'
@@ -136,6 +137,8 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
     Plug 'nanotech/jellybeans.vim'
 
     " Other
+    Plug 'ntpeters/vim-better-whitespace'
+    " Plug 'ConradIrwin/vim-bracketed-paste' " need modern terminal like iTerm2
     " Plug 'nathanaelkane/vim-indent-guides' " visually displaying indent levels in code
 
     call plug#end()
@@ -224,9 +227,6 @@ let g:lexical#spelllang = ['en_us', 'ru_ru']
 
 let g:easytags_async = 1
 
-" Automatically removing all trailing whitespace
-autocmd BufWritePre * :%s/\s\+$//e
-
 let g:vim_markdown_folding_disabled = 1
 
 nmap <F8> :TagbarToggle<CR>
@@ -238,9 +238,6 @@ imap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
 
 " format the entire file
 nnoremap <leader>fef :normal! gg=G``<CR>
-
-" set text wrapping toggles
-nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
 
 " find merge conflict markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
@@ -259,7 +256,7 @@ nnoremap <Leader>w :w<CR>
 " vmap <Leader>p "+p
 " vmap <Leader>P "+P
 
-nmap <C-\> :NERDTreeFind<CR>
+nmap <C-m> :NERDTreeFind<CR>
 nmap <silent> <leader><leader> :NERDTreeToggle<CR>
 
 let NERDTreeIgnore = ['\.pyc$', '\.retry$', '^activate', '^easy_install', '^pip$', '^pip3', '^python$', '^python3', 'migrations', '__pycache__', '^flask$',]
@@ -337,7 +334,7 @@ set completeopt-=preview
     let test#strategy = "dispatch"
     let test#python#runner = 'pytest'
 
-    nmap <silent> <leader>r :TestSuite<CR>
+    nmap <silent> <leader>t :TestSuite<CR>
     nmap <silent> <leader>rf :TestFile<CR>
     nmap <silent> <leader>rn :TestNearest<CR>
     nmap <silent> <leader>rr :TestLast<CR>
@@ -428,6 +425,10 @@ fun! DetectTemplate()
 endfun
 autocmd BufNewFile,BufRead *.html call DetectTemplate()
 
+augroup common
+  autocmd BufEnter * EnableStripWhitespaceOnSave
+augroup END
+
 " search for the current selection via *
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
@@ -437,6 +438,11 @@ function! s:VSetSearch(cmdtype)
     let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
     let @s = temp
 endfunction
+
+augroup quickfix
+    autocmd!
+    autocmd FileType qf setlocal wrap
+augroup END
 
 if filereadable(expand("~/.vimrc.after"))
   source ~/.vimrc.after
