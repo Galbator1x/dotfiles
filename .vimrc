@@ -21,8 +21,8 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
     " Plug 'dyng/ctrlsf.vim' " Powered code search and view tool
     " Plug 'mileszs/ack.vim' " Search tool (need to install ack-grep)
     Plug 'jlanzarotta/bufexplorer'
-    Plug 'ctrlpvim/ctrlp.vim'
-    Plug 'jasoncodes/ctrlp-modified.vim'
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
     Plug 'scrooloose/nerdtree'
     " Plug 'godlygeek/tabular' " Text filtering and alignment
     " Plug 'jeetsukumaran/vim-buffergator' " Vim plugin to list, select and switch between buffers
@@ -31,9 +31,22 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
     " Autocomplete
     Plug 'jiangmiao/auto-pairs'
     Plug 'tpope/vim-unimpaired'
-    Plug 'Valloric/YouCompleteMe'
+    " Plug 'Valloric/YouCompleteMe'
     Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
     Plug 'reedes/vim-lexical' " Build on Vim’s spell/thes/dict completion
+
+    " Language client
+    " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+    " " (Optional) Multi-entry selection UI.
+    " Plug 'junegunn/fzf'
+    " " (Optional) Multi-entry selection UI.
+    " Plug 'Shougo/denite.nvim'
+    " " (Optional) Completion integration with deoplete.
+    " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    " " (Optional) Completion integration with nvim-completion-manager.
+    " Plug 'roxma/nvim-completion-manager'
+    " " (Optional) Showing function signature and inline doc.
+    " Plug 'Shougo/echodoc.vim'
 
     " Advanced
     Plug 'vim-airline/vim-airline' " status/tabline
@@ -50,7 +63,7 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
     Plug 'xolox/vim-easytags' " Automated tag file generation and syntax highlighting of tags
     " Plug 'Shougo/vimshell.vim' " Powerful shell implemented by vim
     " Plug 'SirVer/ultisnips' "The ultimate snippet solution for Vim
-    " Plug 'w0rp/ale' " Asynchronous Lint Engine
+    Plug 'w0rp/ale' " Asynchronous Lint Engine
     Plug 'skywind3000/asyncrun.vim' " Run Async Shell Commands
     Plug 'editorconfig/editorconfig-vim'
 
@@ -78,6 +91,16 @@ let $PATH = $PATH . ':' . expand("~/.local/bin")
     " Python
     " Plug 'python-mode/python-mode'
     Plug 'nvie/vim-flake8'
+
+    " Ruby, Rails
+    Plug 'tpope/vim-bundler'
+    Plug 'tpope/vim-rails'
+    Plug 'vim-ruby/vim-ruby'
+    Plug 'tpope/vim-endwise'
+    " Plug 'sunaku/vim-ruby-minitest'
+    Plug 'thoughtbot/vim-rspec'
+    Plug 'tpope/vim-rvm'
+    Plug 'p0deje/vim-ruby-interpolation'
 
     " Clojure
     " Plug 'guns/vim-clojure-highlight'
@@ -168,8 +191,8 @@ set noswapfile
 
 set autoindent
 set expandtab
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=2
+set shiftwidth=2
 " set smarttab
 
 set t_Co=256
@@ -226,7 +249,6 @@ nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 nmap <leader>u mQviwU`Q
 nmap <leader>l mQviwu`Q
 
-nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 
 " Хуй знает что это
@@ -241,8 +263,6 @@ nmap <C-\> :NERDTreeFind<CR>
 nmap <silent> <leader><leader> :NERDTreeToggle<CR>
 
 let NERDTreeIgnore = ['\.pyc$', '\.retry$', '^activate', '^easy_install', '^pip$', '^pip3', '^python$', '^python3', 'migrations', '__pycache__', '^flask$',]
-
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 nmap <silent> // :nohlsearch<CR>
 noremap <leader>/ :set hlsearch! hlsearch?<CR>
@@ -292,6 +312,8 @@ autocmd FileType python setlocal ts=4 sts=4 sw=4 et autoindent
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 et autoindent
 autocmd Filetype htmldjango setlocal ts=2 sts=2 sw=2 et autoindent
 autocmd Filetype css setlocal ts=2 sts=2 sw=2 et autoindent
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 et autoindent
+autocmd Filetype html.erb setlocal ts=2 sts=2 sw=2 et autoindent
 "autocmd! BufWritePost * Neomake
 
 autocmd FileType python nnoremap <Leader>i :!isort %<CR><CR>
@@ -351,6 +373,47 @@ vnoremap <C-c> "+y
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+
+" let g:LanguageClient_autoStart = 1
+" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+nmap <C-p> :Files<CR>
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+
+" Move between linting errors
+nnoremap ]r :ALENextWrap<CR>
+nnoremap [r :ALEPreviousWrap<CR>
+
+let g:airline#extensions#ale#enabled = 1
 
 fun! DetectTemplate()
   let n = 1

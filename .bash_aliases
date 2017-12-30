@@ -12,6 +12,8 @@ alias pmmk='python manage.py makemigrations'
 alias pmu='python manage.py upgrade'
 alias pmuser='python manage.py createsuperuser'
 
+alias dm='docker-machine'
+
 alias kkpdbreset='rm db.sqlite3 && rm -rf problem_solver/migrations/ && pmm && pmmk problem_solver && pmm'
 
 alias cd1='cd ..'
@@ -23,6 +25,8 @@ alias cddot='cd ~/projects/dotfiles/'
 alias cdmkv='cd ~/Videos/mkv/'
 alias cdkkp='cd ~/projects/kkp/ && workon kkp'
 alias cdrun='cd ~/projects/running_delivery/running/ && workon running'
+alias cded='cd ~/projects/edstein/'
+alias cdg='cd ~/projects/thegame/'
 
 alias pstart='sudo /etc/init.d/postgresql start'
 alias pstop='sudo /etc/init.d/postgresql stop'
