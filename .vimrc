@@ -243,6 +243,9 @@ noremap <leader>/ :set hlsearch! hlsearch?<CR>
 " select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
+" set text wrapping toggles
+nmap <silent> <leader>w :set invwrap<CR>:set wrap?<CR>
+
 """ Plugins Keymaps
 
 nmap <C-m> :NERDTreeFind<CR>
@@ -256,6 +259,8 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 " Move between linting errors
 nnoremap ]r :ALENextWrap<CR>
 nnoremap [r :ALEPreviousWrap<CR>
+
+map <Leader>a :call RunAllSpecs()<CR>
 
 """ Plugin Settings
 
