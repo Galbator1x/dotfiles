@@ -84,6 +84,7 @@ Plug 'tpope/vim-ragtag' " A set of mappings for HTML...
 Plug 'mattn/emmet-vim'
 " Plug 'wlangstroth/vim-racket'
 Plug 'chr4/nginx.vim'
+Plug 'hashivim/vim-terraform'
 
 " Python
 " Plug 'python-mode/python-mode'
@@ -171,7 +172,7 @@ set ttyfast
 
 set hidden
 set nofoldenable
-set wrap
+set nowrap
 set linebreak
 set number
 set hlsearch
@@ -234,6 +235,8 @@ nnoremap ff :normal! gg=G``<CR>
 nmap <leader>u mQviwU`Q
 nmap <leader>l mQviwu`Q
 
+nmap <leader>s :vertical RS<CR>
+
 " find merge conflict markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
@@ -261,6 +264,15 @@ nnoremap ]r :ALENextWrap<CR>
 nnoremap [r :ALEPreviousWrap<CR>
 
 map <Leader>a :call RunAllSpecs()<CR>
+
+nmap     <C-F>f <Plug>CtrlSFPrompt
+vmap     <C-F>f <Plug>CtrlSFVwordPath
+vmap     <C-F>F <Plug>CtrlSFVwordExec
+nmap     <C-F>n <Plug>CtrlSFCwordPath
+nmap     <C-F>p <Plug>CtrlSFPwordPath
+nnoremap <C-F>o :CtrlSFOpen<CR>
+nnoremap <C-F>t :CtrlSFToggle<CR>
+inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
 """ Plugin Settings
 
@@ -298,6 +310,7 @@ let g:bufExplorerDisableDefaultKeyMapping=1
 let g:bufExplorerShowRelativePath=1
 
 let g:airline#extensions#ale#enabled = 1
+let g:ale_set_highlights = 0
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -371,9 +384,10 @@ set completeopt-=preview
     endfunction
 " }
 
+nnoremap <leader>fh :vertical resize 30<CR>
 nnoremap <leader>fj :vertical resize 60<CR>
-nnoremap <leader>fk :vertical resize 65<CR>
-nnoremap <leader>fl :vertical resize 70<CR>
+nnoremap <leader>fk :vertical resize 75<CR>
+nnoremap <leader>fl :vertical resize 85<CR>
 nnoremap <silent> <leader>q :close<CR>
 
 " autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
