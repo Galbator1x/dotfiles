@@ -3,6 +3,7 @@ alias i='sudo sh idea.sh'
 
 alias sorti='isort -rc .'
 alias y='yandex-disk'
+alias h='heroku'
 
 alias va='source ../activate'
 alias pm='python manage.py'
