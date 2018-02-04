@@ -217,8 +217,8 @@ map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
 " Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
+" nnoremap p p=`]<C-o>
+" nnoremap P P=`]<C-o>
 
 " Edit .vimrc
 map <leader>vl :vsp $MYVIMRC<CR>
