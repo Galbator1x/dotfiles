@@ -3,3 +3,5 @@
 .vim/autoload
 
 __pycache__/
+
+*.retry

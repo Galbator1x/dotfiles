@@ -299,7 +299,8 @@ vmap <Leader>p "0p
 nmap <Leader>P "0P
 vmap <Leader>P "0P
 
-let NERDTreeIgnore = ['\.pyc$', '\.retry$', '^activate', '^easy_install', '^pip$', '^pip3', '^python$', '^python3', 'migrations', '__pycache__', '^flask$',]
+let NERDTreeIgnore = ['.git', '\.pyc$', '\.retry$', '^activate', '^easy_install', '^pip$', '^pip3', '^python$', '^python3', '__pycache__', '^flask$',]
+let NERDTreeShowHidden=1
 
 " Allows you to enter sudo pass and save the file
 " " when you forgot to open your file with sudo
