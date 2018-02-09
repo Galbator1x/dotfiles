@@ -282,6 +282,8 @@ let g:lexical#spelllang = ['en_us', 'ru_ru']
 
 let g:ale_linters = {
       \   'markdown': [],
+      \   'yaml': [],
+      \   'python': [],
       \   'javascript': ['eslint', 'flow'],
       \}
 

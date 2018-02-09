@@ -15,3 +15,6 @@ Style/Documentation:
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
