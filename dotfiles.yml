@@ -1,9 +1,30 @@
 ---
 - hosts: all
-  vars:
-    ansible_python_interpreter: '/usr/bin/env python3'
-    config: ~/.bash_profile
-  # tasks:
+  # vars:
+  #   ansible_python_interpreter: '/usr/bin/env python3'
+  #   config: ~/.bash_profile
+
+  tasks:
+    - file:
+        src: "{{ curdir }}/files/bashrc"
+        dest: ~/.bashrc
+        state: link
+
+    - file:
+        src: "{{ curdir }}/files/bash_aliases"
+        dest: ~/.bash_aliases
+        state: link
+
+    - file:
+        src: "{{ curdir }}/files/tmux.conf"
+        dest: ~/.tmux.conf
+        state: link
+
+    - file:
+        src: "{{ curdir }}/files/rubocop.yml"
+        dest: ~/.rubocop.yml
+        state: link
+
   #   - lineinfile: dest="{{ config }}" state=present create=yes
   #       line="set -o vi"
 

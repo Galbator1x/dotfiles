@@ -14,7 +14,7 @@ nvim_configure:
 	ansible-playbook nvim.yml -i local -vvv -e curdir=$(CURDIR) -K
 
 install_dotfiles:
-	ansible-playbook dotfiles.yml -i local -vv
+	ansible-playbook dotfiles.yml -i local -vv -e curdir=$(CURDIR)
 
 ansible_install_ubuntu:
 	sudo apt-get install software-properties-common
