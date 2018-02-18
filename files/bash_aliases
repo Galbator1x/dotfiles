@@ -24,6 +24,7 @@ alias cdmkv='cd ~/Videos/mkv/'
 alias cdkkp='cd ~/projects/kkp/'
 alias cded='cd ~/projects/edstein/'
 alias cdg='cd ~/projects/thegame/'
+alias cdsg='cd ~/projects/sgl-backend/'
 
 alias cl='clear'
 alias gs='git status'
