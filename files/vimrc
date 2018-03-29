@@ -171,6 +171,7 @@ set lazyredraw
 set ttyfast
 
 set hidden
+set cursorline
 set nofoldenable
 set nowrap
 set linebreak
@@ -310,6 +311,7 @@ cmap w!! %!sudo tee > /dev/null %
 
 " Blockwise Visual
 command! Vb normal! <C-v>
+map <leader>vb :Vb<CR>
 
 let g:bufExplorerDisableDefaultKeyMapping=1
 let g:bufExplorerShowRelativePath=1
@@ -395,7 +397,7 @@ nnoremap <leader>fk :vertical resize 75<CR>
 nnoremap <leader>fl :vertical resize 85<CR>
 nnoremap <silent> <leader>q :close<CR>
 
-" autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
