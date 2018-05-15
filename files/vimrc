@@ -139,11 +139,14 @@ Plug 'mitermayer/vim-prettier', {
       \ 'do': 'yarn install',
       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
 " rhysd/vim-clang-format " for clang-format, a formatter for JavaScript,...
-" Plug 'ConradIrwin/vim-bracketed-paste' " need modern terminal like iTerm2
+Plug 'ConradIrwin/vim-bracketed-paste' " need modern terminal like iTerm2
 " Plug 'nathanaelkane/vim-indent-guides' " visually displaying indent levels in code
 
 call plug#end()
 " filetype plugin indent on
+
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3.6'
 
 let mapleader = "\<Space>"
 
@@ -226,8 +229,8 @@ map <leader>vl :vsp $MYVIMRC<CR>
 map <leader>vr :source $MYVIMRC<CR>
 
 " Toggle paste mode TODO replace by plugin
-nmap <silent> <F4> :set invpaste<CR>:set paste?<CR>
-imap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
+" nmap <silent> <F4> :set invpaste<CR>:set paste?<CR>
+" imap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
 
 " format the entire file
 nnoremap ff :normal! gg=G``<CR>
@@ -302,7 +305,7 @@ vmap <Leader>p "0p
 nmap <Leader>P "0P
 vmap <Leader>P "0P
 
-let NERDTreeIgnore = ['.git', '\.pyc$', '\.retry$', '^activate', '^easy_install', '^pip$', '^pip3', '^python$', '^python3', '__pycache__', '^flask$', '.ropeproject', '.cache',]
+let NERDTreeIgnore = ['.git', '\.pyc$', '\.retry$', '^activate', '^easy_install', '^pip$', '^pip3', '^python$', '^python3', '__pycache__', '^flask$', '.ropeproject', '.cache', '.DS_Store', '.docker-sync',]
 let NERDTreeShowHidden=1
 
 " Allows you to enter sudo pass and save the file
@@ -329,7 +332,6 @@ nmap <C-p> :Files<CR>
 augroup common
   autocmd BufEnter * EnableStripWhitespaceOnSave
 augroup END
-let g:better_whitespace_enabled = 0
 
 if filereadable(expand("~/.vimrc.after"))
   source ~/.vimrc.after
@@ -392,9 +394,11 @@ set completeopt-=preview
 " }
 
 nnoremap <leader>fh :vertical resize 30<CR>
-nnoremap <leader>fj :vertical resize 60<CR>
+nnoremap <leader>fj :vertical resize 50<CR>
 nnoremap <leader>fk :vertical resize 75<CR>
-nnoremap <leader>fl :vertical resize 85<CR>
+nnoremap <leader>fl :vertical resize 90<CR>
+nnoremap <leader>fn :vertical resize 105<CR>
+nnoremap <leader>fm :vertical resize 120<CR>
 nnoremap <silent> <leader>q :close<CR>
 
 autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
@@ -438,3 +442,17 @@ function! s:VSetSearch(cmdtype)
     let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
     let @s = temp
 endfunction
+
+augroup filetypedetect
+  " autocmd!
+  " au BufEnter *.markdown,*.mkd,*.md setl wrap tw=79
+  " au BufEnter *.json setl ft=javascript
+  au BufEnter *.py setl ts=4 sw=4 sts=4
+  " autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
+  " autocmd BufNewFile,BufRead *.slime setlocal filetype=slim
+  " au BufEnter *.js setl ts=2 sw=2 sts=2
+  " au BufEnter *.html setl ts=4 sw=4 sts=4
+  " au BufEnter *.tex setl wrap tw=79 fo=tcqor
+  " au BufEnter Makefile setl ts=4 sts=4 sw=4 noet list
+  " au BufEnter *.es6 setf javascript
+augroup END

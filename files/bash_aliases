@@ -28,6 +28,7 @@ alias cdg='cd ~/projects/thegame/'
 alias cdsg='cd ~/projects/sgl-backend/'
 alias cdsgf='cd ~/projects/sgl-frontend/'
 alias cdl='cd ~/projects/liga_online/'
+alias cdt='cd ~/projects/testing_rails/'
 
 alias cl='clear'
 alias gs='git status'

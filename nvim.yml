@@ -12,9 +12,6 @@
         dest: ~/.config/nvim/init.vim
         state: link
 
-    - pip: name=neovim state=latest
-      become: yes
-
     - file: path=~/.local/share/nvim/site/autoload state=directory recurse=Yes
       with_items:
         - autoload
