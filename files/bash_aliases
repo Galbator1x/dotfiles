@@ -2,6 +2,7 @@ alias vim='nvim'
 alias sorti='isort -rc .'
 alias y='yandex-disk'
 alias h='heroku'
+alias r='bin/rails'
 
 alias dm='docker-machine'
 
@@ -23,6 +24,8 @@ alias cdg='cd ~/projects/thegame/'
 alias cdsg='cd ~/projects/sgl-backend/'
 alias cdsgf='cd ~/projects/sgl-frontend/'
 alias cdl='cd ~/projects/liga_online/'
+alias cdh='cd ~/projects/hexlet/'
+alias cds='cd ~/projects/sicp/'
 
 alias cl='clear'
 alias gs='git status'

@@ -16,5 +16,8 @@ Style/Documentation:
 Style/ClassAndModuleChildren:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 Naming/AccessorMethodName:
   Enabled: false

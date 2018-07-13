@@ -82,7 +82,6 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'tpope/vim-ragtag' " A set of mappings for HTML...
 " Plug 'editorconfig/editorconfig-vim' " http://editorconfig.org/
 Plug 'mattn/emmet-vim'
-" Plug 'wlangstroth/vim-racket'
 Plug 'chr4/nginx.vim'
 Plug 'hashivim/vim-terraform'
 
@@ -110,8 +109,9 @@ Plug 'p0deje/vim-ruby-interpolation'
 " Plug 'tpope/vim-salve' " static support for Leiningen and Boot
 " Plug 'venantius/vim-eastwood' " Clojure's Eastwood linter
 " Plug 'venantius/vim-cljfmt'
-" Plug 'vim-scripts/paredit.vim' " Structured Editing of Lisp S-expressions
+Plug 'vim-scripts/paredit.vim', { 'for': ['clojure', 'scheme', 'racket'] }
 " Plug 'jpalardy/vim-slime' " to turn Emacs into a Lisp IDE
+Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
 
 " Haskell
 " Plug 'eagletmt/ghcmod-vim'
@@ -305,7 +305,7 @@ vmap <Leader>p "0p
 nmap <Leader>P "0P
 vmap <Leader>P "0P
 
-let NERDTreeIgnore = ['.git', '\.pyc$', '\.retry$', '^activate', '^easy_install', '^pip$', '^pip3', '^python$', '^python3', '__pycache__', '^flask$', '.ropeproject', '.cache', '.DS_Store', '.docker-sync',]
+let NERDTreeIgnore = ['.git', '\.pyc$', '\.retry$', '^activate', '^easy_install', '^pip$', '^pip3', '^python$', '^python3', '__pycache__', '^flask$', '.ropeproject', '.cache', '.DS_Store', '.docker-sync', '.bundle',]
 let NERDTreeShowHidden=1
 
 " Allows you to enter sudo pass and save the file
