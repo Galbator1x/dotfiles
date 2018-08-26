@@ -15,6 +15,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'janko-m/vim-test'
 Plug '907th/vim-auto-save'
+Plug 'wellle/targets.vim'
 
 " Search and navigation
 Plug 'dyng/ctrlsf.vim' " Powered code search and view tool

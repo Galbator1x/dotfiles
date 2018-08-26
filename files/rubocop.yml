@@ -1,5 +1,10 @@
+require: rubocop-rspec
+
 Metrics/LineLength:
   Max: 100
+  Exclude:
+    - 'engines/edstein_core/app/api/api/v1/entities/*'
+    - 'engines/edstein_core/app/api/api/v1/entities/*/*'
 
 Metrics/MethodLength:
   Max: 20
@@ -21,3 +26,9 @@ Style/FrozenStringLiteralComment:
 
 Naming/AccessorMethodName:
   Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
