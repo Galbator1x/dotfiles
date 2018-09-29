@@ -40,6 +40,8 @@ alias go='git checkout'
 alias gk='gitk --all&'
 alias gx='gitx --all'
 alias gh='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+alias grh='git reset HEAD'
+
 
 alias va='source ../activate'
 alias pm='python manage.py'

@@ -37,11 +37,16 @@ Plug 'reedes/vim-lexical' " Build on Vim’s spell/thes/dict completion
 " Plug 'honza/vim-snippets'
 
 " Language client
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 " " (Optional) Multi-entry selection UI.
 " Plug 'Shougo/denite.nvim'
 " " (Optional) Completion integration with deoplete.
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " " (Optional) Completion integration with nvim-completion-manager.
 " Plug 'roxma/nvim-completion-manager'
 " " (Optional) Showing function signature and inline doc.
@@ -247,6 +252,8 @@ nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 nmap <silent> // :nohlsearch<CR>
 noremap <leader>/ :set hlsearch! hlsearch?<CR>
+noremap <leader>= :Tabularize /=<CR>
+noremap <leader>: :Tabularize /:\zs<CR>
 
 " select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
@@ -283,6 +290,12 @@ inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
 """ Plugin Settings
 
+" let g:LanguageClient_autoStart = 1
+
+" let g:LanguageClient_serverCommands = {
+"       \ 'ruby': ['language_server-ruby']
+"       \ }
+
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toc_autofit = 1
 let g:lexical#spelllang = ['en_us', 'ru_ru']
@@ -295,6 +308,12 @@ let g:ale_linters = {
       \}
 
 let g:vim_markdown_folding_disabled = 1
+
+" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
 nmap <F8> :TagbarToggle<CR>
 
@@ -351,19 +370,6 @@ autocmd FileType python nnoremap <Leader>i :!isort %<CR><CR>
 
 set completeopt-=preview
 
-" let g:pymode_lint_unmodified = 1
-" let g:pymode_lint_checkers = ['pyflakes']
-" let g:pymode_lint_write = 1
-" let g:pymode_python = 'python3'
-" let g:pymode_options_max_line_length = 90
-" let g:pymode_options_colorcolumn = 0
-" let g:pymode_indent = 1
-" let g:pymode_folding = 0
-" let g:pymode_run = 0
-" let g:pymode_rope_vim_completion = 0
-" let g:pymode_syntax_highlight_self = 0
-" let g:pymode_breakpoint = 0
-
 " { Vim-test
     let test#strategy = "dispatch"
     let test#python#runner = 'pytest'
@@ -376,22 +382,22 @@ set completeopt-=preview
 " }
 
 " { Quick run via <F5>
-    nnoremap <F5> :call <SID>compile_and_run()<CR>
+    " nnoremap <F5> :call <SID>compile_and_run()<CR>
 
-    augroup SPACEVIM_ASYNCRUN
-        autocmd!
-        " Automatically open the quickfix window
-        autocmd User AsyncRunStart call asyncrun#quickfix_toggle(6, 1)
-    augroup END
+    " augroup SPACEVIM_ASYNCRUN
+    "     autocmd!
+    "     " Automatically open the quickfix window
+    "     autocmd User AsyncRunStart call asyncrun#quickfix_toggle(6, 1)
+    " augroup END
 
-    function! s:compile_and_run()
-        exec 'w'
-        if &filetype == 'sh'
-           exec "AsyncRun! time bash %"
-        elseif &filetype == 'python'
-           exec "AsyncRun! python3 %"
-        endif
-    endfunction
+    " function! s:compile_and_run()
+    "     exec 'w'
+    "     if &filetype == 'sh'
+    "        exec "AsyncRun! time bash %"
+    "     elseif &filetype == 'python'
+    "        exec "AsyncRun! python3 %"
+    "     endif
+    " endfunction
 " }
 
 nnoremap <leader>fh :vertical resize 30<CR>
