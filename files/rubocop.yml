@@ -1,4 +1,11 @@
 require: rubocop-rspec
+require:
+ - 'test_prof/rubocop'
+
+RSpec/AggregateFailures:
+  Enabled: true
+  Include:
+    - 'spec/**/*.rb'
 
 Metrics/LineLength:
   Max: 100

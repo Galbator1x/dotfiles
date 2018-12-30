@@ -1,7 +1,4 @@
-set nocompatible
-" filetype off
-
-let $PATH = $PATH . ':' . expand("~/.local/bin")
+" set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
@@ -20,46 +17,34 @@ Plug 'wellle/targets.vim'
 " Search and navigation
 Plug 'dyng/ctrlsf.vim' " Powered code search and view tool
 " Plug 'mileszs/ack.vim' " Search tool (need to install ack-grep)
-Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'godlygeek/tabular' " Text filtering and alignment
-" Plug 'jeetsukumaran/vim-buffergator' " Vim plugin to list, select and switch between buffers
 " Plug 'tpope/vim-projectionist' " Provides granular project configuration
 
 " Autocomplete
+" Plug 'ncm2/ncm2'
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-ultisnips' " ultisnips completion
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
-" Plug 'Valloric/YouCompleteMe'
 Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
 Plug 'reedes/vim-lexical' " Build on Vim’s spell/thes/dict completion
 " Plug 'honza/vim-snippets'
-
-" Language client
 " Plug 'autozimu/LanguageClient-neovim', {
 "     \ 'branch': 'next',
 "     \ 'do': 'bash install.sh',
 "     \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-" " (Optional) Multi-entry selection UI.
-" Plug 'Shougo/denite.nvim'
-" " (Optional) Completion integration with deoplete.
-" " (Optional) Completion integration with nvim-completion-manager.
-" Plug 'roxma/nvim-completion-manager'
-" " (Optional) Showing function signature and inline doc.
-" Plug 'Shougo/echodoc.vim'
 
 " Advanced
 Plug 'vim-airline/vim-airline' " status/tabline
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar' " F8. Displays tags in a window, ordered by scope
 Plug 'mbbill/undotree' " The ultimate undo history visualizer
 Plug 'Valloric/MatchTagAlways' " Always highlight enclosing tags
-" Plug 'terryma/vim-multiple-cursors'
 " Plug 'Shougo/vimproc.vim' " Interactive command execution in Vim
 Plug 'shime/vim-livedown', { 'for': 'markdown' }
 " Plug 'joonty/vdebug' " Multi-language DBGP debugger client
@@ -69,41 +54,45 @@ Plug 'xolox/vim-misc' " Miscellaneous auto-load Vim scripts
 " Plug 'SirVer/ultisnips' "The ultimate snippet solution for Vim
 Plug 'w0rp/ale' " Asynchronous Lint Engine
 Plug 'skywind3000/asyncrun.vim' " Run Async Shell Commands
-Plug 'editorconfig/editorconfig-vim'
-
-" Tools integration
-" Plug 'hashivim/vim-vagrant'
+Plug 'editorconfig/editorconfig-vim' " http://editorconfig.org/
+Plug 'lxhillwind/leader-clipboard'
+Plug 'michaeljsmith/vim-indent-object'
 
 " Languages support
 Plug 'othree/html5.vim' " HTML5 omnicomplete and syntax
 " Plug 'tpope/vim-haml', { 'for': 'haml' } " Vim runtime files for Haml, Sass, and SCSS
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'tmux-plugins/vim-tmux'
-Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'lepture/vim-jinja', { 'for': 'jinja' }
 Plug 'fatih/vim-go'
 Plug 'elzr/vim-json' " A better JSON for Vim: distinct highlighting of keywords vs values
 Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'tpope/vim-ragtag' " A set of mappings for HTML...
-" Plug 'editorconfig/editorconfig-vim' " http://editorconfig.org/
 Plug 'mattn/emmet-vim'
 Plug 'chr4/nginx.vim'
 Plug 'hashivim/vim-terraform'
+" Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
+Plug 'slim-template/vim-slim', { 'for': ['slim', 'slime'] }
 
 " Python
 " Plug 'python-mode/python-mode'
 Plug 'nvie/vim-flake8'
 
 " Ruby
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'tpope/vim-endwise'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-rvm'
 Plug 'p0deje/vim-ruby-interpolation'
 " Plug 'sunaku/vim-ruby-minitest' " highlighting & completion for MiniTest
+
+" Elixir
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
+Plug 'c-brenn/phoenix.vim', { 'for': 'elixir' }
 
 " Clojure
 " Plug 'guns/vim-clojure-highlight'
@@ -118,13 +107,6 @@ Plug 'p0deje/vim-ruby-interpolation'
 Plug 'vim-scripts/paredit.vim', { 'for': ['clojure', 'scheme', 'racket'] }
 " Plug 'jpalardy/vim-slime' " to turn Emacs into a Lisp IDE
 Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
-
-" Haskell
-" Plug 'eagletmt/ghcmod-vim'
-" Plug 'eagletmt/neco-ghc'
-" Plug 'mpickering/hlint-refactor-vim'
-" Plug 'neovimhaskell/haskell-vim'
-" Plug 'twinside/vim-hoogle'
 
 " JavaScript
 Plug 'pangloss/vim-javascript' " Vastly improved Javascript indentation and syntax
@@ -142,7 +124,7 @@ Plug 'nanotech/jellybeans.vim'
 " Other
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'mitermayer/vim-prettier', {
-      \ 'do': 'yarn install',
+      \ 'do': 'npm install',
       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
 " rhysd/vim-clang-format " for clang-format, a formatter for JavaScript,...
 Plug 'ConradIrwin/vim-bracketed-paste' " need modern terminal like iTerm2
@@ -167,20 +149,14 @@ if has('mouse')
   set mouse=a
 endif
 
-if has("clipboard")
-  set clipboard=unnamed " copy to the system clipboard
-
-  if has("unnamedplus") " X11 support
-    set clipboard+=unnamedplus
-  endif
-endif
-
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 set ttyfast
 
-set hidden
+set shortmess+=c
+
 set cursorline
+set hidden
 set nofoldenable
 set nowrap
 set linebreak
@@ -195,7 +171,8 @@ set nowritebackup
 set nowb
 set noswapfile
 
-" set autoindent
+set showcmd       " display incomplete commands
+
 set expandtab
 set softtabstop=2
 set shiftwidth=2
@@ -226,10 +203,6 @@ map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
-" Auto indent pasted text
-" nnoremap p p=`]<C-o>
-" nnoremap P P=`]<C-o>
-
 " Edit .vimrc
 map <leader>vl :vsp $MYVIMRC<CR>
 map <leader>vr :source $MYVIMRC<CR>
@@ -241,19 +214,10 @@ map <leader>vr :source $MYVIMRC<CR>
 " format the entire file
 nnoremap ff :normal! gg=G``<CR>
 
-" upper/lower word
-nmap <leader>u mQviwU`Q
-nmap <leader>l mQviwu`Q
-
-nmap <leader>s :vertical RS<CR>
-
 " find merge conflict markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 nmap <silent> // :nohlsearch<CR>
-noremap <leader>/ :set hlsearch! hlsearch?<CR>
-noremap <leader>= :Tabularize /=<CR>
-noremap <leader>: :Tabularize /:\zs<CR>
 
 " select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
@@ -266,7 +230,7 @@ nmap <silent> <leader>w :set invwrap<CR>:set wrap?<CR>
 nmap <C-m> :NERDTreeFind<CR>
 nmap <silent> <leader><leader> :NERDTreeToggle<CR>
 
-nnoremap <leader>b :BufExplorer<CR>
+nnoremap <leader>b :Buffers<CR>
 
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
@@ -278,6 +242,11 @@ nnoremap [r :ALEPreviousWrap<CR>
 map <Leader>m :LivedownToggle<CR>
 
 map <Leader>a :call RunAllSpecs()<CR>
+
+noremap <leader>/ :set hlsearch! hlsearch?<CR>
+noremap <leader>= :Tabularize /=<CR>
+noremap <leader>: :Tabularize /:\zs<CR>
+nnoremap <leader>fc :Commits<CR>
 
 nmap     <C-F>f <Plug>CtrlSFPrompt
 vmap     <C-F>f <Plug>CtrlSFVwordPath
@@ -293,18 +262,23 @@ inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 " let g:LanguageClient_autoStart = 1
 
 " let g:LanguageClient_serverCommands = {
-"       \ 'ruby': ['language_server-ruby']
+"       \ 'ruby': ['solargraph', 'stdio'],
 "       \ }
 
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toc_autofit = 1
 let g:lexical#spelllang = ['en_us', 'ru_ru']
 
+let g:airline#extensions#ale#enabled = 1
+let g:ale_set_highlights = 0
+let g:ale_sign_column_always = 1
 let g:ale_linters = {
+      \   'ruby': ['rubocop'],
       \   'markdown': [],
       \   'yaml': [],
       \   'python': [],
       \   'javascript': ['eslint', 'flow'],
+      \   'elixir': [],
       \}
 
 let g:vim_markdown_folding_disabled = 1
@@ -320,12 +294,7 @@ nmap <F8> :TagbarToggle<CR>
 " set text wrapping toggles
 nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
 
-nmap <Leader>p "0p
-vmap <Leader>p "0p
-nmap <Leader>P "0P
-vmap <Leader>P "0P
-
-let NERDTreeIgnore = ['.git', '\.pyc$', '\.retry$', '^activate', '^easy_install', '^pip$', '^pip3', '^python$', '^python3', '__pycache__', '^flask$', '.ropeproject', '.cache', '.DS_Store', '.docker-sync', '.bundle',]
+let NERDTreeIgnore = ['.git', '\.pyc$', '\.retry$', '^activate', '^easy_install', '^pip$', '^pip3', '^python$', '^python3', '__pycache__', '^flask$', '.ropeproject', '.cache', '.DS_Store', '.docker-sync', '.bundle', '.keep',]
 let NERDTreeShowHidden=1
 
 " Allows you to enter sudo pass and save the file
@@ -335,12 +304,6 @@ cmap w!! %!sudo tee > /dev/null %
 " Blockwise Visual
 command! Vb normal! <C-v>
 map <leader>vb :Vb<CR>
-
-let g:bufExplorerDisableDefaultKeyMapping=1
-let g:bufExplorerShowRelativePath=1
-
-let g:airline#extensions#ale#enabled = 1
-let g:ale_set_highlights = 0
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -368,7 +331,7 @@ autocmd FileType python setlocal ts=4 sts=4 sw=4 et
 
 autocmd FileType python nnoremap <Leader>i :!isort %<CR><CR>
 
-set completeopt-=preview
+set completeopt=noinsert,menuone,noselect
 
 " { Vim-test
     let test#strategy = "dispatch"
