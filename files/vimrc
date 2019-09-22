@@ -104,25 +104,25 @@ Plug 'c-brenn/phoenix.vim', { 'for': 'elixir' }
 " Plug 'tpope/vim-salve' " static support for Leiningen and Boot
 " Plug 'venantius/vim-eastwood' " Clojure's Eastwood linter
 " Plug 'venantius/vim-cljfmt'
-Plug 'vim-scripts/paredit.vim', { 'for': ['clojure', 'scheme', 'racket'] }
+" Plug 'vim-scripts/paredit.vim', { 'for': ['clojure', 'scheme', 'racket'] }
 " Plug 'jpalardy/vim-slime' " to turn Emacs into a Lisp IDE
 Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
 
 " JavaScript
 Plug 'pangloss/vim-javascript' " Vastly improved Javascript indentation and syntax
-" Plug 'mxw/vim-jsx' " React JSX syntax highlighting and indenting
+Plug 'mxw/vim-jsx' " React JSX syntax highlighting and indenting
 " Plug 'mtscout6/vim-cjsx'
 " Plug 'flowtype/vim-flow'
 " Plug 'moll/vim-node' " Tools and environment to make Vim superb for developing with Node.js
 " Plug 'benjie/neomake-local-eslint.vim'
 " Plug 'ternjs/tern_for_vim'
 " Plug 'chemzqm/vim-jsx-improve', { 'for': 'javascript' }
+Plug 'kchmck/vim-coffee-script'
 
 " Themes
 Plug 'nanotech/jellybeans.vim'
 
 " Other
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'mitermayer/vim-prettier', {
       \ 'do': 'npm install',
       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
@@ -312,9 +312,7 @@ omap <leader><tab> <plug>(fzf-maps-o)
 
 nmap <C-p> :Files<CR>
 
-augroup common
-  autocmd BufEnter * EnableStripWhitespaceOnSave
-augroup END
+autocmd BufWritePre * :%s/\s\+$//e
 
 if filereadable(expand("~/.vimrc.after"))
   source ~/.vimrc.after
@@ -389,6 +387,12 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+
+command! -bang -nargs=? -complete=dir GFiles
+      \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=? -complete=dir Files
+      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 fun! DetectTemplate()
   let n = 1

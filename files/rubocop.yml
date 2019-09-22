@@ -1,6 +1,6 @@
-require: rubocop-rspec
-require:
- - 'test_prof/rubocop'
+# require: rubocop-rspec
+# require:
+#  - 'test_prof/rubocop'
 
 RSpec/AggregateFailures:
   Enabled: true
