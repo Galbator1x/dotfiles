@@ -246,7 +246,7 @@ map <Leader>a :call RunAllSpecs()<CR>
 noremap <leader>/ :set hlsearch! hlsearch?<CR>
 noremap <leader>= :Tabularize /=<CR>
 noremap <leader>: :Tabularize /:\zs<CR>
-nnoremap <leader>fc :Commits<CR>
+" nnoremap <leader>fc :Commits<CR>
 
 nmap     <C-F>f <Plug>CtrlSFPrompt
 vmap     <C-F>f <Plug>CtrlSFVwordPath
