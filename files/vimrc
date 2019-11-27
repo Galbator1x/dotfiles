@@ -212,7 +212,7 @@ map <leader>vr :source $MYVIMRC<CR>
 " imap <silent> <F4> <ESC>:set invpaste<CR>:set paste?<CR>
 
 " format the entire file
-nnoremap ff :normal! gg=G``<CR>
+" nnoremap ff :normal! gg=G``<CR>
 
 " find merge conflict markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>

@@ -5,6 +5,7 @@
 # If you have anything that's using the Debug Trap or PROMPT_COMMAND
 # change it to use preexec or precmd
 # See also https://github.com/rcaloras/bash-preexec
+export EDITOR=vim
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export LC_ALL=en_US.UTF-8
 
