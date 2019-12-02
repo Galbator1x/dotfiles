@@ -121,6 +121,8 @@ Plug 'kchmck/vim-coffee-script'
 
 " Themes
 Plug 'nanotech/jellybeans.vim'
+Plug 'iCyMind/NeoSolarized'
+Plug 'vim-airline/vim-airline-themes'
 
 " Other
 Plug 'mitermayer/vim-prettier', {
@@ -180,7 +182,12 @@ set shiftwidth=2
 set splitbelow
 set scrolloff=3
 
-colorscheme jellybeans
+" colorscheme jellybeans
+colorscheme NeoSolarized
+
+set termguicolors
+set background=light
+let g:airline_theme='solarized'
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
