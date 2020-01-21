@@ -1,0 +1,9 @@
+[user]
+	name = Ivan Filimonov
+  mail = snake73w@gmail.com
+	email = snake73w@gmail.com
+[core]
+  pager = diff-so-fancy | less --tabs=4 -RFX
+[color "diff-highlight"]
+  oldHighlight = "red 52"
+  newHighlight = "green 22"
