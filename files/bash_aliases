@@ -26,6 +26,7 @@ alias cdps='cd ~/projects/pet-screening/'
 alias cdsh='cd ~/projects/sheets/'
 alias cdb='cd ~/projects/boardroom-insiders/'
 alias cdd='cd ~/projects/dualbootpartners-com/'
+alias cdm='cd ~/projects/mwc_web/'
 alias cdt='cd ~/projects/task_manager/'
 
 alias cl='clear'

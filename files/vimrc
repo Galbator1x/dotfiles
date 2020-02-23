@@ -24,20 +24,11 @@ Plug 'godlygeek/tabular' " Text filtering and alignment
 " Plug 'tpope/vim-projectionist' " Provides granular project configuration
 
 " Autocomplete
-" Plug 'ncm2/ncm2'
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-" Plug 'ncm2/ncm2-bufword'
-" Plug 'ncm2/ncm2-path'
-" Plug 'ncm2/ncm2-ultisnips' " ultisnips completion
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-unimpaired'
 Plug 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
 Plug 'reedes/vim-lexical' " Build on Vim’s spell/thes/dict completion
 " Plug 'honza/vim-snippets'
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
 
 " Advanced
 Plug 'vim-airline/vim-airline' " status/tabline
@@ -47,7 +38,7 @@ Plug 'mbbill/undotree' " The ultimate undo history visualizer
 Plug 'Valloric/MatchTagAlways' " Always highlight enclosing tags
 " Plug 'Shougo/vimproc.vim' " Interactive command execution in Vim
 Plug 'shime/vim-livedown', { 'for': 'markdown' }
-" Plug 'joonty/vdebug' " Multi-language DBGP debugger client
+" Plug 'joonty/vdebug', { 'on': 'VdebugStart' } " Multi-language DBGP debugger client
 Plug 'xolox/vim-misc' " Miscellaneous auto-load Vim scripts
 " Plug 'xolox/vim-easytags' " Automated tag file generation and syntax highlighting of tags
 " Plug 'Shougo/vimshell.vim' " Powerful shell implemented by vim
