@@ -1,41 +1,41 @@
-# require: rubocop-rspec
-# require:
-#  - 'test_prof/rubocop'
+inherit_gem:
+  relaxed-rubocop: .rubocop.yml
 
-RSpec/AggregateFailures:
-  Enabled: true
-  Include:
-    - 'spec/**/*.rb'
-
-Metrics/LineLength:
-  Max: 100
+AllCops:
+  TargetRubyVersion: 2.7.0
   Exclude:
-    - 'engines/edstein_core/app/api/api/v1/entities/*'
-    - 'engines/edstein_core/app/api/api/v1/entities/*/*'
-
-Metrics/MethodLength:
-  Max: 20
-
-Metrics/BlockLength:
-  Enabled: false
-
-Metrics/AbcSize:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
+    - db/**/*
+    - bin/*
+    - vendor/**/*
+    - docs/**/*
+    - tmp/**/*
+    - test/**/*
+    - node_modules/**/*
+    - config/routes.rb
 
 Style/ClassAndModuleChildren:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
+  Description: >-
+    Add the frozen_string_literal comment to the top of files
+    to help transition from Ruby 2.3.0 to Ruby 3.0.
+  Enabled: true
+
+Security/Eval:
   Enabled: false
 
-Naming/AccessorMethodName:
+Lint/ShadowedException:
   Enabled: false
 
-RSpec/MultipleExpectations:
+Lint/InterpolationCheck:
   Enabled: false
 
-RSpec/NestedGroups:
-  Max: 5
+Metrics/BlockLength:
+  Max: 35
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Lint/AmbiguousOperator:
+  Enabled: false
