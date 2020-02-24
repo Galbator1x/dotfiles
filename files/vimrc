@@ -52,6 +52,7 @@ let g:coc_global_extensions = [
       \ 'coc-highlight',
       \ 'coc-docker',
       \ 'coc-diagnostic',
+      \ 'coc-prettier',
       \ 'coc-git',
       \]
 
@@ -141,9 +142,6 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline-themes'
 
 " Other
-Plug 'mitermayer/vim-prettier', {
-      \ 'do': 'npm install',
-      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
 " rhysd/vim-clang-format " for clang-format, a formatter for JavaScript,...
 Plug 'ConradIrwin/vim-bracketed-paste' " need modern terminal like iTerm2
 " Plug 'nathanaelkane/vim-indent-guides' " visually displaying indent levels in code
@@ -260,9 +258,9 @@ nnoremap <leader>b :Buffers<CR>
 inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
 
-map <Leader>m :LivedownToggle<CR>
+map <leader>m :LivedownToggle<CR>
 
-map <Leader>a :call RunAllSpecs()<CR>
+map <leader>a :call RunAllSpecs()<CR>
 
 noremap <leader>/ :set hlsearch! hlsearch?<CR>
 noremap <leader>= :Tabularize /=<CR>
@@ -435,8 +433,6 @@ augroup END
 vmap <leader>a <Plug>(coc-codeaction-selected)
 nmap <leader>a <Plug>(coc-codeaction-selected)
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
 "let g:coc_snippet_next = '<tab>'
 
 "" Use <C-l> for trigger snippet expand.
@@ -500,9 +496,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 "" Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
-"" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+map <leader>f  :CocCommand prettier.formatFile<CR>
 
 augroup mygroup
   autocmd!
