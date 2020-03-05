@@ -38,7 +38,6 @@ let g:coc_global_extensions = [
       \ 'coc-tabnine',
       \ 'coc-cspell-dicts',
       \ 'coc-spell-checker',
-      \ 'coc-tsserver',
       \ 'coc-html',
       \ 'coc-lists',
       \ 'coc-sh',
@@ -58,7 +57,6 @@ let g:coc_global_extensions = [
 
 " Advanced
 Plug 'vim-airline/vim-airline' " status/tabline
-Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar' " F8. Displays tags in a window, ordered by scope
 Plug 'mbbill/undotree' " The ultimate undo history visualizer
 Plug 'Valloric/MatchTagAlways' " Always highlight enclosing tags
@@ -395,11 +393,12 @@ let g:fzf_colors =
 
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
-command! -bang -nargs=? -complete=dir GFiles
-      \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
+" TODO: fix segmentation fault
+" command! -bang -nargs=? -complete=dir GFiles
+"       \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-command! -bang -nargs=? -complete=dir Files
-      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" command! -bang -nargs=? -complete=dir Files
+"       \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 fun! DetectTemplate()
   let n = 1
@@ -513,7 +512,7 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 " Remap for do codeAction of current line
 nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+" nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)
