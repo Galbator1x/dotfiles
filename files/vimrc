@@ -393,12 +393,10 @@ let g:fzf_colors =
 
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
-" TODO: fix segmentation fault
-" command! -bang -nargs=? -complete=dir GFiles
-"       \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=? -complete=dir Files
+      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-" command! -bang -nargs=? -complete=dir Files
-"       \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview('up'), <bang>0)
 
 fun! DetectTemplate()
   let n = 1
@@ -535,3 +533,6 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 "" Add status line support, for integration with other plugin, checkout `:h coc-status`
 " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Fix navigating jump list broken by coc nvim
+nnoremap <C-i> <C-i>
