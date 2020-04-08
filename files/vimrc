@@ -203,6 +203,8 @@ set termguicolors
 set background=light
 let g:airline_theme='solarized'
 
+set inccommand=split
+
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
