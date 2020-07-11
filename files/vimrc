@@ -147,9 +147,6 @@ Plug 'ConradIrwin/vim-bracketed-paste' " need modern terminal like iTerm2
 call plug#end()
 " filetype plugin indent on
 
-let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
-
 let mapleader = "\<Space>"
 
 " https://github.com/vim/vim/blob/master/runtime/doc/russian.txt
@@ -344,11 +341,11 @@ set completeopt=noinsert,menuone,noselect
     let test#strategy = "dispatch"
     let test#python#runner = 'pytest'
 
-    nmap <silent> <leader>rt :TestSuite<CR>
-    nmap <silent> <leader>rf :TestFile<CR>
-    nmap <silent> <leader>rn :TestNearest<CR>
-    nmap <silent> <leader>rr :TestLast<CR>
-    nmap <silent> <leader>g :TestVisit<CR>
+    " nmap <silent> <leader>rt :TestSuite<CR>
+    " nmap <silent> <leader>rf :TestFile<CR>
+    " nmap <silent> <leader>rn :TestNearest<CR>
+    " nmap <silent> <leader>rr :TestLast<CR>
+    " nmap <silent> <leader>g :TestVisit<CR>
 " }
 
 " { Quick run via <F5>
@@ -495,7 +492,9 @@ endfunction
 " autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>rr <Plug>(coc-rename)
+
+nnoremap <leader>ss :CocSearch <C-r>=expand("<cword>")<CR><CR>
 
 map <leader>f  :CocCommand prettier.formatFile<CR>
 

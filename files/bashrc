@@ -198,6 +198,6 @@ if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
   . `brew --prefix`/etc/bash_completion.d/git-completion.bash
 fi
 
-go() {
+gch() {
  git checkout "$(git branch | fzf | tr -d '[:space:]')"
 }
