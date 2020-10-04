@@ -375,7 +375,7 @@ nnoremap <leader>fn :vertical resize 105<CR>
 nnoremap <leader>fm :vertical resize 120<CR>
 nnoremap <silent> <leader>q :close<CR>
 
-autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
+nmap cll oconsole.log();<Esc>==f(a
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
