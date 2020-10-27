@@ -6,6 +6,9 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+autocmd vimenter * NERDTree
+autocmd vimenter * :vertical resize 50<CR>
+
 call plug#begin('~/.vim/plugged')
 
 " General
