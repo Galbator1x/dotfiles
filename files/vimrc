@@ -280,23 +280,11 @@ inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
 """ Plugin Settings
 
-" let g:LanguageClient_autoStart = 1
-
-" let g:LanguageClient_serverCommands = {
-"       \ 'ruby': ['solargraph', 'stdio'],
-"       \ }
-
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toc_autofit = 1
 let g:lexical#spelllang = ['en_us', 'ru_ru']
 
 let g:vim_markdown_folding_disabled = 1
-
-" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-
-" nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
 nmap <F8> :TagbarToggle<CR>
 
@@ -334,7 +322,7 @@ let g:auto_save_events = ["InsertLeave", "TextChanged"]
 let g:livedown_autorun = 0
 let g:livedown_open = 1
 
-autocmd FileType python setlocal ts=4 sts=4 sw=4 et
+" autocmd FileType python setlocal ts=4 sts=4 sw=4 et
 
 autocmd FileType python nnoremap <Leader>i :!isort %<CR><CR>
 
