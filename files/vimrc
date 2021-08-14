@@ -487,7 +487,7 @@ nmap <leader>rr <Plug>(coc-rename)
 
 nnoremap <leader>ss :CocSearch <C-r>=expand("<cword>")<CR><CR>
 
-map <leader>f  :CocCommand prettier.formatFile<CR>
+map <leader>f  :CocCommand eslint.executeAutofix<CR>
 
 augroup mygroup
   autocmd!
