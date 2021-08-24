@@ -288,9 +288,6 @@ let g:vim_markdown_folding_disabled = 1
 
 nmap <F8> :TagbarToggle<CR>
 
-" set text wrapping toggles
-nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
-
 let NERDTreeIgnore = ['.git', '\.pyc$', '\.retry$', '^activate', '^easy_install', '^pip$', '^pip3', '^python$', '^python3', '__pycache__', '^flask$', '.ropeproject', '.cache', '.DS_Store', '.docker-sync', '.bundle', '.keep',]
 let NERDTreeShowHidden=1
 
@@ -530,3 +527,6 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Fix navigating jump list broken by coc nvim
 nnoremap <C-i> <C-i>
+
+" copy current file path to clipboard
+nnoremap <Leader>c :let @+ = expand("%")<CR>
