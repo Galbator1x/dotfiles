@@ -11,9 +11,7 @@
     "yml"
   ],
   "cSpell.language": "en,ru",
-  "prettier.printWidth": 120,
-  "prettier.trailingComma": "all",
-  "prettier.eslintIntegration": true,
-  "prettier.stylelintIntegration": true,
-  "prettier.singleQuote": true
+  "eslint.workingDirectories": [
+    { "mode": "auto" }
+  ]
 }

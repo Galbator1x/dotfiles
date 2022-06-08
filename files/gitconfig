@@ -6,3 +6,5 @@
 [color "diff-highlight"]
   oldHighlight = "red 52"
   newHighlight = "green 22"
+[pull]
+	rebase = false
