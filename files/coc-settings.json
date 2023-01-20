@@ -1,5 +1,4 @@
 {
-  "coc.preferences.enableFloatHighlight": false,
   "suggest.autoTrigger": "none",
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": " ⟶   ",

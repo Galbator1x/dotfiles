@@ -252,11 +252,7 @@ nnoremap <leader>re :%s///g<left><left>
 
 """ Plugins Keymaps
 
-nmap <tab>m :NERDTreeFind<CR>
 nmap <C-m> :NERDTreeFind<CR>
-nmap <C-n> :NERDTreeFind<CR>
-" vim.api.nvim_set_keymap('n', '<C-p>', ':NERDTreeFind<CR>', { noremap = false })
-" nvim_set_keymap('n', '<c-m>', '<cmd>NERDTreeToggle<cr>')
 nmap <silent> <leader><leader> :NERDTreeToggle<CR>
 
 nnoremap <leader>b :Buffers<CR>
@@ -489,7 +485,6 @@ nmap <leader>rr <Plug>(coc-rename)
 nnoremap <leader>ss :CocSearch <C-r>=expand("<cword>")<CR><CR>
 
 map <leader>f  :CocCommand eslint.executeAutofix<CR>
-" TODO: fix css formatting
 map <leader>e  :CocCommand prettier.formatFile<CR>
 
 augroup mygroup
