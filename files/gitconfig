@@ -1,6 +1,6 @@
 [user]
   name = Ivan Filimonov
-	email = ivan.filimonov@dualbootpartners.com
+	email = ivan.filimonov@rt.ru
 [core]
   pager = diff-so-fancy | less --tabs=4 -RFX
 [color "diff-highlight"]
