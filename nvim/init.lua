@@ -1,6 +1,2 @@
-vim.loader.enable()
-
-require('settings')
-require('colorscheme')
-require('plugins.init')
-require('keymappings')
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
