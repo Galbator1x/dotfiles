@@ -11,12 +11,12 @@ return {
       {
         "<leader>b",
         function() require("telescope.builtin").buffers() end,
-        desc = "Find Plugin File",
+        desc = "Find Buffer",
       },
       {
         "<leader>sb",
         function() require("telescope.builtin").current_buffer_fuzzy_find() end,
-        desc = "Find Plugin File",
+        desc = "Find TODO",
       },
       {
         "<leader>sg",
