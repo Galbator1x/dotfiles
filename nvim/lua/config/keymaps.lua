@@ -7,3 +7,5 @@ local opts = { silent = true, noremap = true }
 
 bind("n", "<leader>q", "<cmd>q<cr>", { silent = true, noremap = true, nowait = true }) -- TODO: nowait don't work
 bind("n", "n", "nzzzv")
+
+bind("n", "<leader>c", ":let @+ = expand('%')<cr>")

@@ -26,27 +26,27 @@ return {
       {
         "<leader>sd",
         function() require("telescope.builtin").diagnostics() end,
-        desc = "Find Plugin File",
+        desc = "Diagnostics",
       },
       {
         "<leader>sc",
         function() require("telescope.builtin").git_commits() end,
-        desc = "Find Plugin File",
+        desc = "Find Git Commits",
       },
       {
         "<leader>sr",
         function() require("telescope.builtin").lsp_references() end,
-        desc = "Find Plugin File",
+        desc = "Find lsp references",
       },
       {
         "<leader>so",
         function() require("telescope.builtin").lsp_document_symbols() end,
-        desc = "Find Plugin File",
+        desc = "Find lsp document symbols",
       },
       {
         "<leader>sh",
         function() require("telescope.builtin").help_tags() end,
-        desc = "Find Plugin File",
+        desc = "Find Help Tags",
       },
       {
         "<leader><leader>",
@@ -57,10 +57,20 @@ return {
 
     opts = {
       defaults = {
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
-        sorting_strategy = "ascending",
-        winblend = 0,
+         mappings = {
+           -- restore default behavior
+           i = {
+             ["<C-u>"] = false,
+             ["<C-d>"] = false,
+           },
+           n = {},
+         },
+      },
+      pickers = {
+        buffers = {
+          ignore_current_buffer = true,
+          sort_mru = true,
+        },
       },
     },
   },
