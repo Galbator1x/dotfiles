@@ -9,3 +9,4 @@ bind("n", "<leader>q", "<cmd>q<cr>", { silent = true, noremap = true, nowait = t
 bind("n", "n", "nzzzv")
 
 bind("n", "<leader>c", ":let @+ = expand('%')<cr>")
+bind("n", "<leader>re", ":%s///g<left><left>")
