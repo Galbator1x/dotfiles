@@ -17,4 +17,5 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+  { "michaeljsmith/vim-indent-object" },
 }
