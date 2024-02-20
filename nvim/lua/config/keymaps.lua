@@ -3,7 +3,9 @@
 -- Add any additional keymaps here
 
 local bind = vim.keymap.set
-local opts = { silent = true, noremap = true }
+
+vim.keymap.del('n', 'H')
+vim.keymap.del('n', 'L')
 
 bind("n", "<leader>q", "<cmd>q<cr>", { silent = true, noremap = true, nowait = true }) -- TODO: nowait don't work
 bind("n", "n", "nzzzv")

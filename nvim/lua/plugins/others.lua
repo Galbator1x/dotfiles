@@ -18,4 +18,5 @@ return {
     opts = {},
   },
   { "michaeljsmith/vim-indent-object" },
+  { "tpope/vim-fugitive" },
 }
