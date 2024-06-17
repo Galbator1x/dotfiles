@@ -21,7 +21,7 @@ return {
       {
         "<leader>sg",
         function() require("telescope.builtin").live_grep() end,
-        desc = "Find Plugin File",
+        desc = "Live Grep",
       },
       {
         "<leader>sd",
@@ -61,9 +61,9 @@ return {
            -- restore default behavior
            i = {
              ["<C-u>"] = false,
-             ["<C-d>"] = false,
+             -- ["<C-d>"] = false,
            },
-           n = {},
+           -- n = {},
          },
       },
       pickers = {
