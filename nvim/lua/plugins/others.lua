@@ -1,15 +1,12 @@
 return {
   {
-    "0x00-ketsu/autosave.nvim",
-    opts = {},
-    config = function()
-      require("autosave").setup({
-        prompt_message = function()
-          return ""
-        end,
-        events = { "InsertLeave", "TextChanged" },
-      })
-    end,
+    "okuuva/auto-save.nvim",
+    event = { "InsertLeave", "TextChanged" },
+    opts = {
+      execution_message = {
+        enabled = false
+      }
+    },
   },
   {
     "kylechui/nvim-surround",
@@ -22,7 +19,6 @@ return {
   {
     "Wansmer/langmapper.nvim",
     lazy = false,
-    priority = 1, -- High priority is needed if you will use `autoremap()`
     config = function()
       require("langmapper").setup({})
     end,
