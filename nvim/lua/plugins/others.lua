@@ -9,6 +9,12 @@ return {
     },
   },
   {
+    "nvim-neo-tree/neo-tree.nvim",
+    keys = {
+      { "<leader>fj", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
+    },
+  },
+  {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
@@ -16,11 +22,11 @@ return {
   },
   { "michaeljsmith/vim-indent-object" },
   { "tpope/vim-fugitive" },
-  {
-    "Wansmer/langmapper.nvim",
-    lazy = false,
-    config = function()
-      require("langmapper").setup({})
-    end,
-  },
+  -- {
+  --   "Wansmer/langmapper.nvim",
+  --   lazy = false,
+  --   config = function()
+  --     require("langmapper").setup({})
+  --   end,
+  -- },
 }

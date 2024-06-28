@@ -12,7 +12,6 @@ vim.keymap.del('n', '<leader>ql')
 vim.keymap.del('n', '<leader>qs')
 
 bind("n", "<leader>q", "<cmd>q<cr>", { silent = true, noremap = true, nowait = true }) -- TODO: slow closing in case of which-key mappings <leader>qq...
-bind("n", "n", "nzzzv")
 
 bind("n", "<leader>c", "<cmd>let @+ = expand('%')<cr>")
 bind("n", "<leader>re", ":%s///g<left><left>")
