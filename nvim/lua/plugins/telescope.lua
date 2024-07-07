@@ -1,29 +1,36 @@
 return {
   {
-    "nvim-telescope/telescope.nvim",
+    'nvim-telescope/telescope.nvim',
     keys = {
       {
-        "<C-p>",
-        function() require("telescope.builtin").find_files() end,
-        desc = "Find Files(cwd)",
+        '<C-p>',
+        function()
+          require('telescope.builtin').find_files()
+        end,
+        desc = 'Find Files(cwd)',
       },
       {
-        "<leader><leader>",
-        function() require("telescope.builtin").find_files() end,
-        desc = "Find Files(cwd)",
+        '<leader><leader>',
+        function()
+          require('telescope.builtin').find_files()
+        end,
+        desc = 'Find Files(cwd)',
       },
     },
 
     opts = {
       defaults = {
-         mappings = {
-           -- restore default behavior
-           i = {
-             ["<C-u>"] = false,
-             -- ["<C-d>"] = false,
-           },
-           -- n = {},
-         },
+        file_ignore_patterns = {
+          'bundle_cache',
+        },
+        mappings = {
+          -- restore default behavior
+          i = {
+            ['<C-u>'] = false,
+            -- ["<C-d>"] = false,
+          },
+          -- n = {},
+        },
       },
       pickers = {
         buffers = {

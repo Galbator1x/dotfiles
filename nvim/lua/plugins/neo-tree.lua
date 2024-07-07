@@ -1,8 +1,8 @@
 return {
   {
-    "nvim-neo-tree/neo-tree.nvim",
+    'nvim-neo-tree/neo-tree.nvim',
     keys = {
-      { "<leader>fj", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
+      { '<leader>fj', '<cmd>Neotree toggle<cr>', desc = 'NeoTree' },
     },
     opts = {
       filesystem = {
@@ -10,7 +10,7 @@ return {
         bind_to_cwd = true,
         window = {
           mappings = {
-            ["/"] = "none",
+            ['/'] = 'none',
           },
         },
       },
