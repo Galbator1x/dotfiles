@@ -1,17 +1,15 @@
 return {
   {
+    "folke/tokyonight.nvim",
+    opts = { style = "day" },
+  },
+  {
     "okuuva/auto-save.nvim",
     event = { "InsertLeave", "TextChanged" },
     opts = {
       execution_message = {
         enabled = false
       }
-    },
-  },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    keys = {
-      { "<leader>fj", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
     },
   },
   {

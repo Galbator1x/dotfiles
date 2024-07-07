@@ -5,7 +5,12 @@ return {
       {
         "<C-p>",
         function() require("telescope.builtin").find_files() end,
-        desc = "Find Plugin File",
+        desc = "Find Files(cwd)",
+      },
+      {
+        "<leader><leader>",
+        function() require("telescope.builtin").find_files() end,
+        desc = "Find Files(cwd)",
       },
     },
 
