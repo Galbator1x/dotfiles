@@ -5,7 +5,7 @@ alias r='bin/rails'
 
 alias dm='docker-machine'
 alias d='docker'
-alias dc='docker-compose'
+alias dc='docker compose'
 alias dstop='docker stop $(docker ps -aq)'
 
 alias cd2='cd ../../'
