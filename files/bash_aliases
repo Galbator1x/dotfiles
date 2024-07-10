@@ -1,5 +1,5 @@
 alias v='~/Downloads/nvim-macos-arm64/bin/nvim'
-alias vi='nvim'
+alias vi='NVIM_APPNAME="nvim-kickstart" ~/Downloads/nvim-macos-arm64/bin/nvim'
 alias vim='nvim'
 alias r='bin/rails'
 
