@@ -1,7 +1,6 @@
 -- Must set leader before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
 vim.o.spelllang = 'ru_ru,en_us'
 
 vim.g.autoformat = false
@@ -24,3 +23,9 @@ vim.opt.smartcase = true
 vim.opt.updatetime = 250 -- Used for CursorHold event
 
 vim.opt.termguicolors = true
+
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+-- Plugins -------------------------
+vim.g.miniindentscope_disable = true

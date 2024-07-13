@@ -18,7 +18,7 @@ return {
     event = 'VeryLazy',
     opts = {},
   },
-  { 'michaeljsmith/vim-indent-object' },
+  -- { 'michaeljsmith/vim-indent-object' },
   { 'tpope/vim-fugitive' },
   -- {
   --   "Wansmer/langmapper.nvim",
