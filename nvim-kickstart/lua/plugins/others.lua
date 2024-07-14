@@ -25,14 +25,19 @@ return {
     opts = {},
   },
 
+  -- {
+  --   'm4xshen/hardtime.nvim', -- show more effective commands and hints
+  --   dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
+  --   opts = {},
+  -- },
+
   {
     'folke/which-key.nvim',
     event = 'VimEnter',
     tag = 'v2.1.0',
-    config = function() -- This is the function that runs, AFTER loading
+    config = function()
       require('which-key').setup()
 
-      -- Document existing key chains
       require('which-key').register {
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
         ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
@@ -42,7 +47,7 @@ return {
         ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
         ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
       }
-      -- visual mode
+
       require('which-key').register({
         ['<leader>h'] = { 'Git [H]unk' },
       }, { mode = 'v' })

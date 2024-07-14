@@ -1,6 +1,6 @@
-alias v='~/Downloads/nvim-macos-arm64/bin/nvim'
-alias vi='NVIM_APPNAME="nvim-kickstart" ~/Downloads/nvim-macos-arm64/bin/nvim'
-alias vim='NVIM_APPNAME="nvim-kickstart" nvim'
+alias v='NVIM_APPNAME="nvim-kickstart" ~/Downloads/nvim-macos-arm64/bin/nvim'
+alias vi='NVIM_APPNAME="nvim-kickstart" nvim'
+alias vim='~/Downloads/nvim-macos-arm64/bin/nvim'
 alias r='bin/rails'
 
 alias dm='docker-machine'
