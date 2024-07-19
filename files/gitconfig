@@ -8,3 +8,5 @@
   newHighlight = "green 22"
 [pull]
 	rebase = false
+[push]
+	autoSetupRemote = true

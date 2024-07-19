@@ -9,7 +9,9 @@ vim.keymap.set('n', '<leader>cp', "<cmd>let @+ = expand('%')<cr>") -- TODO: sear
 vim.keymap.set('n', '<leader>re', ':%s///g<left><left>')
 
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>Y', '"+y$', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>P', '"+P', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
