@@ -141,4 +141,14 @@ return {
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
+
+  {
+    'RRethy/nvim-treesitter-endwise',
+    ---@diagnostic disable: missing-fields
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        endwise = { enable = true, },
+      }
+    end,
+  },
 }

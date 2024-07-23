@@ -6,7 +6,6 @@ vim.o.spelllang = 'ru_ru,en_us'
 vim.g.autoformat = false
 
 vim.opt.number = true -- Make line numbers default
-vim.o.relativenumber = true
 vim.opt.signcolumn = 'yes'
 vim.opt.showmode = false -- Don't show the mode, since it's already in the status line
 vim.opt.breakindent = true

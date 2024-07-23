@@ -19,10 +19,10 @@ return {
       defaults = {
         file_ignore_patterns = {
           'bundle_cache',
+          'vendor/cache',
         },
         mappings = {
           i = {
-            ['<esc>'] = require('telescope.actions').close,
             ['<c-enter>'] = 'to_fuzzy_refine',
             ['<C-j>'] = require('telescope.actions').move_selection_next,
             ['<C-k>'] = require('telescope.actions').move_selection_previous,
@@ -30,6 +30,16 @@ return {
             ['<C-b>'] = require('telescope.actions').preview_scrolling_up,
             ['<C-u>'] = false,
           },
+        },
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
+          '--fixed-strings',
         },
       },
       pickers = {
@@ -73,5 +83,23 @@ return {
     vim.keymap.set('n', '<leader>sc', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [C]onfig files' })
+
+    function vim.getVisualSelection()
+      vim.cmd 'noau normal! "vy"'
+      local text = vim.fn.getreg 'v'
+      vim.fn.setreg('v', {})
+
+      text = string.gsub(text, '\n', '')
+      if #text > 0 then
+        return text
+      else
+        return ''
+      end
+    end
+
+    vim.keymap.set('v', '<leader>s', function()
+      local text = vim.getVisualSelection()
+      builtin.grep_string { default_text = text }
+    end, { noremap = true, silent = true })
   end,
 }
