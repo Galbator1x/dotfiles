@@ -9,24 +9,24 @@ return {
     },
   },
 
-  -- {
-  --   'lewis6991/gitsigns.nvim',
-  --   opts = {
-  --     signs = {
-  --       add = { text = '+' },
-  --       change = { text = '~' },
-  --       delete = { text = '_' },
-  --       topdelete = { text = '‾' },
-  --       changedelete = { text = '~' },
-  --     },
-  --   },
-  -- },
+  {
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      -- signs = {
+      --   add = { text = '+' },
+      --   change = { text = '~' },
+      --   delete = { text = '_' },
+      --   topdelete = { text = '‾' },
+      --   changedelete = { text = '~' },
+      -- },
+    },
+  },
 
   {
     'tpope/vim-fugitive',
     config = function()
       vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
-      vim.keymap.set('n', '<leader>gb', '<cmd>Git blame<cr>')
+      vim.keymap.set('n', '<leader>gb', '<cmd>Gitsigns blame<cr>')
     end,
   },
 
@@ -147,8 +147,10 @@ return {
     ---@diagnostic disable: missing-fields
     config = function()
       require('nvim-treesitter.configs').setup {
-        endwise = { enable = true, },
+        endwise = { enable = true },
       }
     end,
   },
+
+  'michaeljsmith/vim-indent-object',
 }

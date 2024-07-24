@@ -47,12 +47,14 @@ return {
   --     -- vim.cmd.colorscheme 'solarized'
   --   end,
   -- },
+
   -- {
-  --   'shaunsingh/solarized.nvim',
+  --   'Galbator1x/solarized.nvim', -- 'shaunsingh/solarized.nvim',
   --   init = function()
   --     vim.cmd.colorscheme 'solarized'
   --   end,
   -- },
+
   -- {
   --   'rose-pine/neovim',
   --   name = 'rose-pine',

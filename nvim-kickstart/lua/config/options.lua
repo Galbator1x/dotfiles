@@ -27,4 +27,5 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- Plugins -------------------------
-vim.g.miniindentscope_disable = true
+-- vim.g.miniindentscope_disable = true
+vim.g.solarized_italics = 0

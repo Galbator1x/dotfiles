@@ -21,5 +21,21 @@ return {
         },
       },
     },
+    buffers = {
+      window = {
+        mappings = {
+          ['l'] = 'open',
+          ['/'] = 'none',
+        },
+      },
+    },
+    git_status = {
+      window = {
+        mappings = {
+          ['l'] = 'open',
+          ['/'] = 'none',
+        },
+      },
+    },
   },
 }
