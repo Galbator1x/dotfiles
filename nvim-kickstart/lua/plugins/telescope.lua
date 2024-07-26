@@ -99,7 +99,7 @@ return {
 
     vim.keymap.set('v', '<leader>s', function()
       local text = vim.getVisualSelection()
-      builtin.grep_string { default_text = text }
+      builtin.live_grep { default_text = text }
     end, { noremap = true, silent = true })
   end,
 }

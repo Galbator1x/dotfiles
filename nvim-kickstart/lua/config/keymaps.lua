@@ -5,7 +5,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', { silent = true, noremap = true, nowait = true })
 
-vim.keymap.set('n', '<leader>cp', "<cmd>let @+ = expand('%')<cr>") -- TODO: search other options
+vim.keymap.set('n', '<leader>cp', "<cmd>let @+ = expand('%')<cr>") -- TODO search other options
 vim.keymap.set('n', '<leader>re', ':%s///g<left><left>')
 
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { noremap = true, silent = true })
@@ -15,8 +15,6 @@ vim.keymap.set({ 'n', 'v' }, '<leader>P', '"+P', { noremap = true, silent = true
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<C-q>', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -32,3 +30,6 @@ local function select_pasted()
   return '`[' .. vim.fn.strpart(vim.fn.getregtype(), 0, 1) .. '`]'
 end
 vim.keymap.set('n', 'gb', select_pasted, { expr = true, noremap = true, silent = true })
+
+-- Plugins ------------------------------
+-- vim.keymap.set('v', 'ai', 'aI') -- TODO

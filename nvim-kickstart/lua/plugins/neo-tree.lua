@@ -8,7 +8,6 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '<leader>fj', ':Neotree toggle<CR>', { desc = 'NeoTree toggle' } },
     { '<C-m>',      ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
   },
   opts = {

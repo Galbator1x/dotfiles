@@ -1,8 +1,7 @@
 return {
   'echasnovski/mini.nvim',
   config = function()
-    -- require('mini.indentscope').setup()
-    require('mini.ai').setup { n_lines = 500 }
+    require('mini.ai').setup { n_lines = 500 } -- Better Around/Inside textobjects
     require('mini.pairs').setup()
 
     local statusline = require 'mini.statusline'
