@@ -19,13 +19,21 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.opt.updatetime = 250 -- Used for CursorHold event
-
 vim.opt.termguicolors = true
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+vim.opt.inccommand = 'split' -- Preview substitutions live in bottom buffer, as you type!
+
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+vim.opt.updatetime = 250 -- Used for CursorHold event
+
+-- Decrease mapped sequence wait time
+-- Displays which-key popup sooner
+vim.opt.timeoutlen = 300
+
 -- Plugins -------------------------
--- vim.g.miniindentscope_disable = true
 vim.g.solarized_italics = 0
