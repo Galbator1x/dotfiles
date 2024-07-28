@@ -1,5 +1,6 @@
 return {
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'Galbator1x/vim-indent-object',
 
   {
     'okuuva/auto-save.nvim',
@@ -117,6 +118,4 @@ return {
       },
     },
   },
-
-  'michaeljsmith/vim-indent-object',
 }

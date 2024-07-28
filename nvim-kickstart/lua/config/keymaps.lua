@@ -30,6 +30,3 @@ local function select_pasted()
   return '`[' .. vim.fn.strpart(vim.fn.getregtype(), 0, 1) .. '`]'
 end
 vim.keymap.set('n', 'gb', select_pasted, { expr = true, noremap = true, silent = true })
-
--- Plugins ------------------------------
--- vim.keymap.set('v', 'ai', 'aI') -- TODO
