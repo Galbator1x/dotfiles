@@ -19,6 +19,7 @@ alias cdef='cd ~/projects/work/ege_frontend/'
 alias cdv='cd ~/projects/work/elections_private_backend/'
 alias cdva='cd ~/projects/work/elections_admin/'
 alias cdvf='cd ~/projects/work/elections_private_frontend/'
+alias cdf='cd ~/projects/work/fms-backend/'
 alias cdm='cd ~/projects/work/merge-blamer/'
 alias cds='cd ~/projects/work/sport/'
 

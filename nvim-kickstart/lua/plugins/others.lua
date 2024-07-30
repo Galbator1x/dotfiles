@@ -57,6 +57,12 @@ return {
   },
 
   {
+    'folke/persistence.nvim',
+    event = 'BufReadPre',
+    opts = {},
+  },
+
+  {
     'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },

@@ -6,6 +6,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'PersistenceSavePre',
+  callback = function()
+    vim.cmd 'Neotree close'
+  end,
+})
+
 vim.api.nvim_create_autocmd('ColorScheme', {
   callback = function()
     vim.cmd 'hi LineNr guibg=none'
