@@ -1,5 +1,6 @@
 return {
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+
   'Galbator1x/vim-indent-object',
 
   {
@@ -60,13 +61,6 @@ return {
     'folke/persistence.nvim',
     event = 'BufReadPre',
     opts = {},
-  },
-
-  {
-    'folke/todo-comments.nvim',
-    event = 'VimEnter',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = { signs = false },
   },
 
   {

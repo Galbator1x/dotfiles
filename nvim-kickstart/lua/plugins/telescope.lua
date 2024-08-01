@@ -65,8 +65,6 @@ return {
     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set('n', '<leader>,', builtin.buffers, { desc = '[ ] Find existing buffers' })
-    vim.keymap.set('n', '<leader>st', "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", { desc = 'Todo/Fix/Fixme' })
-    vim.keymap.set('n', '<leader>sT', "<cmd>TodoTelescope<cr>", { desc = 'Todo' })
     vim.keymap.set('n', '<leader>uC', '<cmd>Telescope colorscheme enable_preview=true<cr>', { desc = 'Change colorscheme' })
 
     vim.keymap.set('n', '<leader>/', function()
