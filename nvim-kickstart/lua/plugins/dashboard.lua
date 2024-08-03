@@ -24,8 +24,6 @@ return {
       return string.format('v%d.%d.%d-%s+%s', v.major, v.minor, v.patch, v.prerelease, v.build)
     end
 
-    local lazy_stats = require('lazy').stats()
-
     local opts = {
       theme = 'doom',
       config = {
@@ -42,10 +40,6 @@ return {
           },
         },
         footer = {
-          '',
-          '',
-          'Startuptime: ' .. lazy_stats.startuptime .. ' ms',
-          'Plugins: ' .. lazy_stats.loaded .. ' loaded / ' .. lazy_stats.count .. ' installed',
           '',
           '',
           get_nvim_version(),
