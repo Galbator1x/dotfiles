@@ -9,7 +9,6 @@ vim.opt.number = true -- Make line numbers default
 vim.opt.signcolumn = 'yes'
 vim.opt.showmode = false -- Don't show the mode, since it's already in the status line
 vim.opt.breakindent = true
-vim.opt.hlsearch = true
 vim.opt.cursorline = true
 vim.opt.scrolloff = 3
 
