@@ -1,5 +1,5 @@
-alias v='NVIM_APPNAME="nvim-kickstart" ~/nvim-macos-arm64/bin/nvim'
-alias vi='NVIM_APPNAME="nvim-kickstart" ~/nvim-macos-arm64/bin/nvim'
+alias v='NVIM_APPNAME="nvim-kickstart" nvim'
+alias vi='NVIM_APPNAME="nvim-kickstart" nvim'
 alias vim='~/nvim-macos-arm64/bin/nvim'
 alias r='bin/rails'
 
