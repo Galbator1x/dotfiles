@@ -7,6 +7,7 @@ vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', { silent = true, noremap = true, 
 
 vim.keymap.set('n', '<leader>cp', "<cmd>let @+ = expand('%')<cr>") -- TODO search other options
 vim.keymap.set('n', '<leader>re', ':%s///g<left><left>')
+vim.keymap.set('v', '<leader>re', ":s///g<left><left>")
 
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>Y', '"+y$', { noremap = true, silent = true })
