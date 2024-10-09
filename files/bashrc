@@ -185,7 +185,7 @@ export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export PATH=$PATH:~/.local/bin;
 
-export PATH=$PATH:~/.spoof-dpi/bin
+export PATH=$PATH:~/.spoofdpi/bin
 
 gch() {
  git checkout "$(git branch | fzf | tr -d '[:space:]')"
