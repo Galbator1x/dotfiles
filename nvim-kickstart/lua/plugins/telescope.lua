@@ -20,6 +20,7 @@ return {
         file_ignore_patterns = {
           'bundle_cache',
           'vendor/cache',
+          '.git/',
         },
         mappings = {
           i = {
@@ -43,6 +44,9 @@ return {
         },
       },
       pickers = {
+        find_files = {
+          hidden = true,
+        },
         buffers = {
           ignore_current_buffer = true,
           sort_mru = true,

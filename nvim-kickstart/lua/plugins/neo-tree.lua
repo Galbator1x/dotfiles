@@ -8,11 +8,19 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '<C-m>',      ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
+    { '<C-m>', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
   },
   opts = {
     filesystem = {
       bind_to_cwd = true,
+      filtered_items = {
+        hide_dotfiles = false,
+      },
+      hide_by_name = {
+        'node_modules',
+        '.git',
+        '.ruby-lsp',
+      },
       window = {
         mappings = {
           ['l'] = 'open',
