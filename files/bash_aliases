@@ -47,3 +47,7 @@ alias gh='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 alias grh='git reset HEAD'
 alias gbm='git branch --merged develop | grep -Ev "(^\*|master|staging|develop)"'
 alias gbrm='git branch --merged develop | grep -Ev "(^\*|master|staging|develop)" | xargs git branch -d'
+
+sp() {
+    ssh poweruser@"$1"
+}
