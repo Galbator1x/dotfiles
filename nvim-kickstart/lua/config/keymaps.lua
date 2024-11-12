@@ -7,7 +7,7 @@ vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', { silent = true, noremap = true, 
 
 vim.keymap.set('n', '<leader>cp', "<cmd>let @+ = expand('%')<cr>") -- TODO search other options
 vim.keymap.set('n', '<leader>re', ':%s///g<left><left>')
-vim.keymap.set('v', '<leader>re', ":s///g<left><left>")
+vim.keymap.set('v', '<leader>re', ':s///g<left><left>')
 
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'v' }, '<leader>Y', '"+y$', { noremap = true, silent = true })
@@ -36,3 +36,7 @@ local function select_pasted()
   return '`[' .. vim.fn.strpart(vim.fn.getregtype(), 0, 1) .. '`]'
 end
 vim.keymap.set('n', 'gb', select_pasted, { expr = true, noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', { desc = 'Toggle Spectre' })
+vim.keymap.set('n', '<leader>Sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', { desc = 'Search current word' })
+vim.keymap.set('v', '<leader>Sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', { desc = 'Search current word' })
