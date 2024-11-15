@@ -24,6 +24,9 @@ return {
       window = {
         mappings = {
           ['l'] = 'open',
+          ['h'] = 'toggle_hidden',
+          ['Z'] = 'close_all_nodes',
+          ['z'] = 'none',
           ['H'] = 'none',
           ['/'] = 'none',
         },
