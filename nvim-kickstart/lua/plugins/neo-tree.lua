@@ -24,6 +24,7 @@ return {
       window = {
         mappings = {
           ['l'] = 'open',
+          ['H'] = 'none',
           ['/'] = 'none',
         },
       },

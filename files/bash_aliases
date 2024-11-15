@@ -1,12 +1,12 @@
-alias v='NVIM_APPNAME="nvim-kickstart" nvim'
-alias vi='NVIM_APPNAME="nvim-kickstart" ~/nvim-macos-arm64/bin/nvim'
+alias v='NVIM_APPNAME="nvim-kickstart" ~/nvim-macos-arm64/bin/nvim'
+alias vi='NVIM_APPNAME="nvim-kickstart" nvim'
 alias vim='~/nvim-macos-arm64/bin/nvim'
 alias r='bin/rails'
 
 alias d='docker'
 alias dc='docker-compose'
 alias dm='docker-machine'
-alias dstop='docker stop $(docker ps -aq)'
+alias dstop='docker stop $(docker ps -aq) && docker-compose down'
 
 alias cd2='cd ../../'
 alias cd3='cd ../../../'

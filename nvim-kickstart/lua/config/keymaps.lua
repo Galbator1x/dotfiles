@@ -5,7 +5,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', { silent = true, noremap = true, nowait = true })
 
-vim.keymap.set('n', '<leader>cp', "<cmd>let @+ = expand('%')<cr>") -- TODO search other options
+vim.keymap.set('n', '<leader>cp', "<cmd>let @+ = expand('%:~:.')<cr>") -- TODO search other options
 vim.keymap.set('n', '<leader>re', ':%s///g<left><left>')
 vim.keymap.set('v', '<leader>re', ':s///g<left><left>')
 
