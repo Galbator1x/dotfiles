@@ -21,6 +21,8 @@ alias cdva='cd ~/projects/work/elections_admin/'
 alias cdvf='cd ~/projects/work/elections_private_frontend/'
 alias cdf='cd ~/projects/work/fms-backend/'
 alias cdm='cd ~/projects/work/merge-blamer/'
+alias cdu='cd ~/projects/work/uvedomlyator/'
+alias cdmr='cd ~/projects/work/mergerequester/'
 alias cds='cd ~/projects/work/sport/'
 
 alias cl='clear'
