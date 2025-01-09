@@ -1,5 +1,10 @@
 theme = Builtin Solarized Light
-font-family = Monaco Nerd Font
-font-size = 14
 title = " "
 macos-titlebar-style = tabs
+window-save-state = always
+
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+font-family = Monaco Nerd Font
+font-size = 14
