@@ -8,3 +8,5 @@ shell-integration-features = no-cursor
 
 font-family = Monaco Nerd Font
 font-size = 14
+
+scrollback-limit = 1073741824
