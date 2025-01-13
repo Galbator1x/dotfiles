@@ -2,6 +2,7 @@ theme = Builtin Solarized Light
 title = " "
 macos-titlebar-style = tabs
 window-save-state = always
+mouse-hide-while-typing = true
 
 cursor-style-blink = false
 shell-integration-features = no-cursor
