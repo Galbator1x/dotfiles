@@ -43,12 +43,12 @@ return {
   --   opts = {},
   -- },
 
-  {
-    'MeanderingProgrammer/markdown.nvim',
-    main = 'render-markdown',
-    opts = {},
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-  },
+  -- {
+  --   'MeanderingProgrammer/markdown.nvim',
+  --   main = 'render-markdown',
+  --   opts = {},
+  --   dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+  -- },
 
   {
     'chentoast/marks.nvim',
