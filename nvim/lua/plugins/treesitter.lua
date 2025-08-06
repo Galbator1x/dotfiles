@@ -24,7 +24,9 @@ return {
   --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
   --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 
-  {
+  { -- lua/nvim-treesitter/endwise.lua:9   local query_opts = vim.fn.has "nvim-0.10" == 1 and { force = true, all = false } or true
+    -- lua/nvim-treesitter/endwise.lua:138 for _, match, metadata in query:iter_matches(root, bufnr, range[1], range[3] + 1, query_opts) do
+    -- lua/nvim-treesitter/endwise.lua:192 end, query_opts)
     'RRethy/nvim-treesitter-endwise',
     ---@diagnostic disable: missing-fields
     config = function()
