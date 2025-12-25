@@ -141,7 +141,7 @@ return {
       })
       -- require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-      require('lspconfig').solargraph.setup {}
+      vim.lsp.enable('solargraph')
 
       require('mason-lspconfig').setup {
         handlers = {
