@@ -183,7 +183,7 @@ run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
 if.app-id = 'com.googlecode.iterm2'
-run = 'move-node-to-workspace 2'
+run = ['move-node-to-workspace 2', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'Mattermost.Desktop'

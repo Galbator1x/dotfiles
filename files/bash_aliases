@@ -1,6 +1,6 @@
-alias v='nvim'
-alias vi='nvim'
-alias vim='~/nvim-macos-arm64/bin/nvim'
+alias v='~/nvim11/bin/nvim'
+alias vi='~/nvim11/bin/nvim'
+alias vim='NVIM_APPNAME=nvim13 ~/nvim-macos-arm64/bin/nvim'
 alias r='bin/rails'
 
 alias d='docker'
