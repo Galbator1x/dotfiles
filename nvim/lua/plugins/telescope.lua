@@ -1,7 +1,7 @@
 return {
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
-  branch = '0.1.x',
+  branch = '0.2.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
     {
@@ -30,6 +30,10 @@ return {
             ['<C-f>'] = require('telescope.actions').preview_scrolling_down,
             ['<C-b>'] = require('telescope.actions').preview_scrolling_up,
             ['<C-u>'] = false,
+            ['<C-s>'] = require('telescope.actions').delete_buffer,
+          },
+          n = {
+            ['<C-s>'] = require('telescope.actions').delete_buffer,
           },
         },
         vimgrep_arguments = {
@@ -71,9 +75,9 @@ return {
     vim.keymap.set('n', '<leader>uC', '<cmd>Telescope colorscheme enable_preview=true<cr>', { desc = 'Change colorscheme' })
 
     vim.keymap.set('n', '<leader>sw', function()
-      require('telescope.builtin').grep_string({
-        word_match = '-w'
-      })
+      require('telescope.builtin').grep_string {
+        word_match = '-w',
+      }
     end, { desc = '[S]earch current [W]ord' })
 
     vim.keymap.set('n', '<leader>/', function()
