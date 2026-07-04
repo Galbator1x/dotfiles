@@ -5,6 +5,11 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.o.spelllang = 'ru_ru,en_us'
 
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_python3_provider = 0
+
 vim.g.have_nerd_font = true
 
 vim.g.autoformat = false
@@ -21,8 +26,6 @@ vim.opt.undofile = true
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-
-vim.opt.termguicolors = true
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true

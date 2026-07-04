@@ -11,6 +11,8 @@ export LC_ALL=en_US.UTF-8
 
 export PATH=/opt/homebrew/bin:$PATH
 
+ulimit -n 8192
+
 source ~/.git-prompt.sh
 
 # If not running interactively, don't do anything

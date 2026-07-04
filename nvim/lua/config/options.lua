@@ -22,8 +22,6 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.opt.termguicolors = true
-
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
