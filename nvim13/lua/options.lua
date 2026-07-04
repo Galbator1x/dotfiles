@@ -1,6 +1,6 @@
 vim.loader.enable() -- Enable faster startup by caching compiled Lua modules
 
--- Must set leader before plugins are loaded (otherwise wrong leader will be used)
+-- NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.o.spelllang = 'ru_ru,en_us'
