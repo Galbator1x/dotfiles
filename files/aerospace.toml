@@ -186,7 +186,7 @@ if.app-id = 'com.googlecode.iterm2'
 run = ['move-node-to-workspace 2', 'layout tiling']
 
 [[on-window-detected]]
-if.app-id = 'Mattermost.Desktop'
+if.app-id = 'com.openai.codex'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
@@ -194,11 +194,7 @@ if.app-id = 'com.apple.Safari'
 run = 'move-node-to-workspace Q'
 
 [[on-window-detected]]
-if.app-id = 'ru.yandex.desktop.music'
-run = 'move-node-to-workspace W'
-
-[[on-window-detected]]
-if.app-id = 'com.openai.codex'
+if.app-id = 'Mattermost.Desktop'
 run = 'move-node-to-workspace W'
 
 [[on-window-detected]]
