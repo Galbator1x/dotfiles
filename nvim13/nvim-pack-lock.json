@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "mini.nvim": {
+      "rev": "9ee72c26ac1440ee6c95ce708c1d739684be316a",
+      "src": "https://github.com/nvim-mini/mini.nvim"
+    },
     "neo-tree.nvim": {
       "rev": "f3f3bf73414e400cf9fc13fda50f00404a8f8ab1",
       "src": "https://github.com/nvim-neo-tree/neo-tree.nvim",
