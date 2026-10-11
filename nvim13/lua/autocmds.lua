@@ -4,7 +4,16 @@ vim.api.nvim_create_autocmd({
   'FocusLost',
   'BufLeave',
 }, {
-  command = 'silent update',
+  desc = 'Save modified file buffers',
+  group = vim.api.nvim_create_augroup('auto-save', { clear = true }),
+  callback = function(ev)
+    local buf = ev.buf
+    local opts = vim.bo[buf]
+    if opts.buftype ~= '' or not opts.modifiable or opts.readonly or not opts.modified then return end
+    if vim.api.nvim_buf_get_name(buf) == '' then return end
+
+    vim.api.nvim_buf_call(buf, function() vim.cmd 'silent update' end)
+  end,
 })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
