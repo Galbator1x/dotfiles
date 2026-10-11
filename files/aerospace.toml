@@ -187,7 +187,7 @@ run = ['move-node-to-workspace 2', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.openai.codex'
-run = 'move-node-to-workspace 3'
+run = ['move-node-to-workspace W', 'layout tiling']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
@@ -195,7 +195,7 @@ run = 'move-node-to-workspace Q'
 
 [[on-window-detected]]
 if.app-id = 'Mattermost.Desktop'
-run = 'move-node-to-workspace W'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
