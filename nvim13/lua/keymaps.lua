@@ -3,12 +3,12 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', { silent = true, noremap = true, nowait = true })
+vim.keymap.set('n', '<leader>q', '<cmd>q<cr>', { silent = true, noremap = true, nowait = true, desc = 'Close window' })
 
-vim.keymap.set('n', '<leader>cp', "<cmd>let @+ = expand('%:~:.')<cr>")
+vim.keymap.set('n', '<leader>cp', "<cmd>let @+ = expand('%:~:.')<cr>", { desc = 'Copy relative file path' })
 
-vim.keymap.set('n', '<leader>re', ':%s///g<left><left>')
-vim.keymap.set('v', '<leader>re', ':s///g<left><left>')
+vim.keymap.set('n', '<leader>re', ':%s///g<left><left>', { desc = 'Replace in file' })
+vim.keymap.set('v', '<leader>re', ':s///g<left><left>', { desc = 'Replace in selection' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to system clipboard' })
 vim.keymap.set('n', '<leader>Y', '"+Y', { desc = 'Yank line-end to system clipboard' })
