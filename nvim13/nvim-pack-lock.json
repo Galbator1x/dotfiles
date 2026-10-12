@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "gitsigns.nvim": {
+      "rev": "aa6cc2d7addb288cfd79a05ac257695d5ff61deb",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
     "mini.nvim": {
       "rev": "9ee72c26ac1440ee6c95ce708c1d739684be316a",
       "src": "https://github.com/nvim-mini/mini.nvim"
@@ -20,6 +24,10 @@
     "nvim-web-devicons": {
       "rev": "58447c1fca354bbf184425e4a8d01deecbd6f3c4",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "persistence.nvim": {
+      "rev": "b20b2a7887bd39c1a356980b45e03250f3dce49c",
+      "src": "https://github.com/folke/persistence.nvim"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",

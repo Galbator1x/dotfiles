@@ -11,6 +11,7 @@ require('mini.ai').setup { -- Better Around/Inside textobjects.
   },
 }
 
+
 require('mini.surround').setup { -- See :help MiniSurround-vim-surround-config.
   mappings = {
     add = 'ys',
@@ -60,13 +61,13 @@ statusline.setup {
 
     inactive = function()
       if vim.bo.filetype == 'neo-tree' then
-        return statusline.combine_groups {{ hl = 'MiniStatuslineFilename', strings = { '' } }}
+        return statusline.combine_groups {{ hl = 'MiniStatuslineInactive', strings = { '' } }}
       end
 
       local filename = statusline.section_filename { trunc_width = 300 }
 
       return statusline.combine_groups {
-        { hl = 'MiniStatuslineFilename', strings = { filename } },
+        { hl = 'MiniStatuslineInactive', strings = { filename } },
       }
     end,
   },
