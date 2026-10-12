@@ -7,8 +7,11 @@ require('which-key').setup {
   spec = {
     { '<leader>c', group = 'Code' },
     { '<leader>g', group = 'Git' },
-    { '<leader>r', group = 'Replace', mode = { 'n', 'x' } },
+    { '<leader>d', group = 'Document' },
+    { '<leader>r', group = 'Rename / Replace', mode = { 'n', 'x' } },
     { '<leader>s', group = 'Search' },
     { '<leader>u', group = 'UI' },
+    { '<leader>t', group = 'Toggle' },
+    { '<leader>w', group = 'Workspace' },
   },
 }
