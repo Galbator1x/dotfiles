@@ -23,7 +23,7 @@ local function attach(buf, language)
   vim.treesitter.start(buf, language)
   if vim.bo[buf].filetype == 'ruby' then
     vim.bo[buf].syntax = 'ruby' -- Preserve regex syntax needed by Ruby's native indentation.
-  elseif vim.treesitter.query.get(language, 'indents') then
+  elseif language ~= 'lua' and vim.treesitter.query.get(language, 'indents') then -- Use native Lua indentation for nested callbacks.
     vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
   end
 end
