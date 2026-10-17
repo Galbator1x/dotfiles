@@ -5,7 +5,10 @@ vim.pack.add {
   'https://github.com/nvim-tree/nvim-web-devicons',
 }
 
-vim.keymap.set('n', '<C-m>', '<Cmd>Neotree reveal<CR>', { desc = 'NeoTree reveal', silent = true })
+vim.keymap.set('n', '<C-m>', function()
+  local is_file = vim.bo.buftype == '' and vim.api.nvim_buf_get_name(0) ~= '' -- Skip Starter and other special or unnamed buffers.
+  require('neo-tree.command').execute { action = 'focus', source = 'filesystem', reveal = is_file }
+end, { desc = 'NeoTree reveal', silent = true })
 
 require('neo-tree').setup {
   filesystem = {

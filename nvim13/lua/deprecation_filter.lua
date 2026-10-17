@@ -1,5 +1,6 @@
+-- TODO: Remove this file and its require in init.lua once installed Plenary and Telescope versions replace vim.F.if_nil with vim.nonnil.
 -- Filter known vim.F.if_nil warnings from Plenary and Telescope before plugins load.
--- Uses an internal Neovim API; remove when both plugins adopt vim.nonnil.
+-- Uses an internal Neovim API.
 local deprecated_health = require 'vim.deprecated.health'
 local add_deprecation = deprecated_health.add
 
