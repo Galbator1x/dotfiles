@@ -11,7 +11,11 @@ vim.pack.add {
 require('mason').setup()
 require('mason-lspconfig').setup { ensure_installed = { 'lua_ls' }, automatic_enable = false }
 require('mason-tool-installer').setup { ensure_installed = { 'stylua' } }
-require('lazydev').setup()
+-- Load plugin libraries once to avoid transient undefined globals during LuaLS workspace reloads.
+-- Preloading all plugin libraries may increase initial indexing time and memory usage.
+require('lazydev').setup {
+  library = vim.fn.globpath(vim.fn.stdpath 'data' .. '/site/pack/*/opt', '*/lua', false, true),
+}
 require('fidget').setup {}
 
 vim.api.nvim_create_autocmd('LspAttach', {
