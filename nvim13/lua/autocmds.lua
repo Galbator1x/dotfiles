@@ -39,11 +39,6 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     vim.cmd 'hi GitSignsChange guibg=none'
     vim.cmd 'hi GitSignsDelete guibg=none'
 
-    -- TODO: mb not needed
-    vim.cmd 'hi VGitSignsAdd guibg=none'
-    vim.cmd 'hi VgitSignsChange guibg=none'
-    vim.cmd 'hi GitSignsDelete guibg=none'
-
     vim.cmd 'hi MiniStatuslineModeNormal guibg=#eee8d5'
     vim.cmd 'hi MiniStatuslineModeInsert guibg=#eee8d5'
     vim.cmd 'hi MiniStatuslineModeVisual guibg=#eee8d5'

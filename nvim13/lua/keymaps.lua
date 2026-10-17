@@ -11,7 +11,7 @@ vim.keymap.set('n', '<leader>re', ':%s///g<left><left>', { desc = 'Replace in fi
 vim.keymap.set('v', '<leader>re', ':s///g<left><left>', { desc = 'Replace in selection' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to system clipboard' })
-vim.keymap.set('n', '<leader>Y', '"+Y', { desc = 'Yank line-end to system clipboard' })
+vim.keymap.set('n', '<leader>Y', '"+y$', { desc = 'Yank line-end to system clipboard' })
 vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p', { desc = 'Paste after from system clipboard' })
 vim.keymap.set({ 'n', 'v' }, '<leader>P', '"+P', { desc = 'Paste before from system clipboard' })
 
