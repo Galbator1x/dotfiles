@@ -37,6 +37,26 @@ subsequent forget or overwrite a newer saved position. Workspace checks
 run immediately before each geometry write, but macOS and AeroSpace do not offer
 an atomic check-and-move operation: a narrow switching race remains possible.
 
+### Local checks and diagnostics
+
+Check the real AeroSpace CLI command used by restores, without moving windows:
+
+```sh
+bash ~/projects/dotfiles/scripts/window-position.sh check
+```
+
+Run `window-position.sh diagnose` to collect the window ID, layout, workspace,
+saved/current geometry, and why a window was skipped. For AeroSpace's permission
+context, launch it through a temporary AeroSpace callback during investigation
+and remove that callback afterward. The last report is stored at
+`~/Library/Logs/dotfiles/window-position-check.log`; it omits window titles and
+app content. Ordinary workspace callbacks do not produce these logs.
+
+To check real restoration: save with Option+Shift+P, move the window slightly,
+switch away and back, then compare current and saved geometry using diagnostics
+in AeroSpace's context. This is a manual local check; no background monitoring
+is installed.
+
 Regression checks (isolated fixtures; do not move real windows):
 
 ```sh

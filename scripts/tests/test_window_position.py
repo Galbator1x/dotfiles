@@ -119,6 +119,35 @@ class WindowPositionTests(unittest.TestCase):
         self.assertEqual(self.run_script().returncode, 0)
         self.assertIn("example.App E auto 100 120 600 700", self.log.read_text())
 
+    def test_cli_check_uses_real_restore_query(self):
+        result = subprocess.run([str(HELPER), "check-cli", str(self.aerospace), "example.App"],
+                                capture_output=True, text=True, timeout=10)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("CLI contract: PASS", result.stdout)
+        queries = [json.loads(line) for line in self.queries.read_text().splitlines()]
+        self.assertEqual(queries, [[
+            "list-windows", "--monitor", "all", "--app-bundle-id", "example.App",
+            "--format", "%{window-id}|%{workspace}|%{window-layout}|%{window-is-fullscreen}",
+        ]])
+
+    def test_inspect_explains_skipped_windows(self):
+        cases = [
+            ("42|E|h_tiles|false", "layout is h_tiles"),
+            ("42|W|floating|false", "belongs to workspace W"),
+            ("42|E|floating|true", "fullscreen"),
+            ("42|E|floating|false\n43|E|floating|false", "multiple managed windows"),
+            ("", "no managed windows"),
+        ]
+        for windows, reason in cases:
+            with self.subTest(windows=windows):
+                self.configure(windows=windows)
+                result = subprocess.run([
+                    str(HELPER), "inspect", str(self.aerospace), "example.App", "E", "42",
+                ], capture_output=True, text=True, timeout=10)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(result.stdout, "")
+                self.assertIn(reason, result.stderr)
+
     def test_missing_helper_does_not_trigger_runtime_build(self):
         self.save_file()
         self.fake_helper.unlink()

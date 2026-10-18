@@ -2,7 +2,7 @@
 set -eu
 
 action=${1:-restore}
-case "$action" in save|restore|forget|build) ;; *) echo 'Usage: window-position.sh save|restore|forget|build' >&2; exit 2 ;; esac
+case "$action" in save|restore|forget|build|check|diagnose) ;; *) echo 'Usage: window-position.sh save|restore|forget|build|check|diagnose' >&2; exit 2 ;; esac
 aerospace_bin=$(command -v aerospace || true)
 [[ -n "$aerospace_bin" ]] || aerospace_bin=/opt/homebrew/bin/aerospace
 state_root="$HOME/Library/Application Support/dotfiles"
@@ -10,6 +10,51 @@ state_dir="$state_root/window-positions"
 script_dir=$(cd -- "$(dirname -- "$0")" && pwd)
 helper_dir="$HOME/Library/Caches/dotfiles"
 helper_bin="$helper_dir/window-position-helper"
+if [[ "$action" == check || "$action" == diagnose ]]; then
+    umask 077
+    report="$HOME/Library/Logs/dotfiles/window-position-check.log"
+    mkdir -p "$(dirname "$report")"
+    set +e
+    (
+        set -e
+        printf 'Window position: %s\nCaller: %s\n' "$action" "${WINDOW_POSITION_DIAGNOSTIC_CALLER:-terminal/other}"
+        date '+%Y-%m-%d %H:%M:%S %z'
+        [[ -x "$helper_bin" ]] || { echo 'Build the helper first: window-position.sh build'; exit 1; }
+        "$aerospace_bin" --version
+        workspace=$("$aerospace_bin" list-workspaces --focused)
+        printf 'Focused workspace: %s\n' "$workspace"
+        window=$("$aerospace_bin" list-windows --focused --format '%{window-id}|%{app-bundle-id}|%{workspace}|%{window-layout}|%{window-is-fullscreen}')
+        printf 'Focused window (ID|app|workspace|layout|fullscreen): %s\n' "${window:-none}"
+        IFS='|' read -r window_id bundle window_workspace layout fullscreen <<< "$window"
+        "$helper_bin" check-cli "$aerospace_bin" "${bundle:-com.example.window-position-check}"
+        if [[ "$action" == diagnose ]]; then
+            "$helper_bin" check-access
+            if [[ "$window_id" =~ ^[0-9]+$ && "$bundle" =~ ^[a-zA-Z0-9._-]+$ ]]; then
+                saved_file="$state_dir/$bundle.txt"
+                if [[ -f "$saved_file" ]]; then
+                    printf 'Saved position (workspace, then x y width height):\n'
+                    cat "$saved_file"
+                    stat -f 'Saved at: %Sm' "$saved_file"
+                    IFS= read -r saved_workspace < "$saved_file"
+                    [[ "$saved_workspace" == "$workspace" ]] || printf 'Restore skipped: saved workspace is %s\n' "$saved_workspace"
+                else
+                    echo 'Restore skipped: no saved position'
+                fi
+                echo 'Current geometry (x y width height), or skip reason:'
+                "$helper_bin" inspect "$aerospace_bin" "$bundle" "$workspace" "$window_id"
+            else
+                echo 'Geometry skipped: no focused window'
+            fi
+        fi
+    ) > "$report" 2>&1
+    status=$?
+    set -e
+    printf 'Exit status: %s\n' "$status" >> "$report"
+    cat "$report"
+    printf 'Report: %s\n' "$report"
+    [[ "${2:-}" != --open ]] || /usr/bin/open -t "$report"
+    exit "$status"
+fi
 build_helper() {
     if [[ ! -x "$helper_bin" || "$script_dir/window-position.swift" -nt "$helper_bin" ]]; then
         mkdir -p "$helper_dir"
