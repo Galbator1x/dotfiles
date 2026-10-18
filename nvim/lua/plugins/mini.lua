@@ -1,59 +1,74 @@
-return {
-  'echasnovski/mini.nvim',
-  config = function()
-    require('mini.ai').setup { n_lines = 500 } -- Better Around/Inside textobjects
-    require('mini.pairs').setup()
+vim.pack.add {
+  'https://github.com/nvim-mini/mini.nvim',
+  'https://github.com/nvim-tree/nvim-web-devicons', -- Filetype icons for mini.statusline.
+}
 
-    local statusline = require 'mini.statusline'
-    statusline.setup {
-      use_icons = true,
-      content = {
-        active = function()
-          if vim.bo.filetype == 'neo-tree' then
-            return MiniStatusline.combine_groups {{ hl = 'MiniStatuslineFilename', strings = { '' } }}
-          end
+require('mini.ai').setup { -- Better Around/Inside textobjects.
+  n_lines = 500,
+  mappings = {
+    inside_last = '', -- Disable previous inner textobject (il); keep native inner line.
+    around_last = '', -- Disable previous outer textobject (al); keep native all lines.
+  },
+}
 
-          local mode, mode_hl = MiniStatusline.section_mode { trunc_width = 120 }
-          local git = MiniStatusline.section_git { trunc_width = 40 }
-          local diff = MiniStatusline.section_diff { trunc_width = 75 }
-          local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 75 }
-          local lsp = MiniStatusline.section_lsp { trunc_width = 75 }
-          local filename = MiniStatusline.section_filename { trunc_width = 300 }
-          local fileinfo = MiniStatusline.section_fileinfo { trunc_width = 120 }
-          local location = MiniStatusline.section_location { trunc_width = 75 }
-          local search = MiniStatusline.section_searchcount { trunc_width = 75 }
 
-          return MiniStatusline.combine_groups {
-            { hl = mode_hl, strings = { mode } },
-            { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } },
-            '%<', -- Mark general truncate point
-            { hl = 'MiniStatuslineFilename', strings = { filename } },
-            '%=', -- End left alignment
-            { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
-            { hl = mode_hl, strings = { search, location } },
-          }
-        end,
+require('mini.surround').setup { -- See :help MiniSurround-vim-surround-config.
+  mappings = {
+    add = 'ys',
+    delete = 'ds',
+    replace = 'cs',
+    find = '', -- Disable jumping to the right surrounding edge (default: sf).
+    find_left = '', -- Disable jumping to the left surrounding edge (default: sF).
+    highlight = '', -- Disable highlighting the surrounding (default: sh).
+    suffix_last = '', -- Disable the suffix for targeting the previous surrounding (default: l).
+    suffix_next = '', -- Disable the suffix for targeting the next surrounding (default: n).
+  },
+  search_method = 'cover_or_next',
+}
 
-        inactive = function()
-          if vim.bo.filetype == 'neo-tree' then
-            return MiniStatusline.combine_groups {{ hl = 'MiniStatuslineFilename', strings = { '' } }}
-          end
+vim.keymap.del('x', 'ys') -- Replace Visual-mode ys with S (for example, viwS").
+vim.keymap.set('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true }) -- Clear the Visual range, then surround the selection.
+vim.keymap.set('n', 'yss', 'ys_', { remap = true }) -- Surround the current line; remap=true invokes the custom ys operator.
 
-          local filename = MiniStatusline.section_filename { trunc_width = 300 }
+local statusline = require 'mini.statusline'
+statusline.setup {
+  content = {
+    active = function()
+      if vim.bo.filetype == 'neo-tree' then
+        return statusline.combine_groups {{ hl = 'MiniStatuslineFilename', strings = { '' } }}
+      end
 
-          return MiniStatusline.combine_groups {
-            { hl = 'MiniStatuslineFilename', strings = { filename } },
-          }
-        end,
-      },
-    }
+      local mode, mode_hl = statusline.section_mode { trunc_width = 120 }
+      local git = statusline.section_git { trunc_width = 40 }
+      local diff = statusline.section_diff { trunc_width = 75 }
+      local diagnostics = statusline.section_diagnostics { trunc_width = 75 }
+      local lsp = statusline.section_lsp { trunc_width = 75 }
+      local filename = statusline.section_filename { trunc_width = 300 }
+      local fileinfo = statusline.section_fileinfo { trunc_width = 120 }
+      local location = statusline.section_location { trunc_width = 75 }
+      local search = statusline.section_searchcount { trunc_width = 75 }
 
-    -- You can configure sections in the statusline by overriding their
-    -- default behavior. For example, here we set the section for
-    -- cursor location to LINE:COLUMN
-    ---@diagnostic disable-next-line: duplicate-set-field
-    statusline.section_location = function()
-      return '%2l:%-2v'
-    end
-  end,
+      return statusline.combine_groups {
+        { hl = mode_hl, strings = { mode } },
+        { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics, lsp } },
+        '%<', -- Mark general truncate point
+        { hl = 'MiniStatuslineFilename', strings = { filename } },
+        '%=', -- End left alignment
+        { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
+        { hl = mode_hl, strings = { search, location } },
+      }
+    end,
+
+    inactive = function()
+      if vim.bo.filetype == 'neo-tree' then
+        return statusline.combine_groups {{ hl = 'MiniStatuslineInactive', strings = { '' } }}
+      end
+
+      local filename = statusline.section_filename { trunc_width = 300 }
+
+      return statusline.combine_groups {
+        { hl = 'MiniStatuslineInactive', strings = { filename } },
+      }
+    end,
+  },
 }

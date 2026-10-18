@@ -1,6 +1,0 @@
-require 'options'
-require 'deprecation_filter'
-require 'keymaps'
-require 'autocmds'
-require 'pack'
-require 'plugins'
