@@ -2,9 +2,13 @@
 
 Write commit messages in English.
 
-# User environment
+# Validation
 
-The user uses iTerm2 on macOS. Use iTerm2 when giving terminal-specific instructions; the Ghostty configuration in this repository does not indicate the active terminal.
+This is a personal dotfiles repository. Run checks appropriate to the change locally. Add CI or Git hooks only when explicitly requested.
+
+# Troubleshooting
+
+Before changing behavior, investigate the cause of the reported problem and verify it with a focused check. Prefer fixing the cause when practical. Use a workaround when a direct fix is unavailable or disproportionately costly, and explain the tradeoff.
 
 # Neovim configuration
 

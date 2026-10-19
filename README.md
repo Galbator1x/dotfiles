@@ -1,5 +1,22 @@
 # dotfiles
 
+## Codex instructions
+
+Global Codex instructions are stored in `files/codex-agents.md` and linked to
+`~/.codex/AGENTS.md`. To restore the link on another machine (preserve any existing
+instructions first):
+
+```sh
+mkdir -p ~/.codex
+ln -s ~/projects/dotfiles/files/codex-agents.md ~/.codex/AGENTS.md
+```
+
+Repository-specific instructions are stored in the root `AGENTS.md`.
+
+- [ ] When trying another agent harness or Claude Code, revisit global agent
+  instructions: decide which guidance should be shared and how to connect it to
+  each tool's instruction files (`AGENTS.md`, `CLAUDE.md`, etc.).
+
 ## Floating window positions
 
 AeroSpace restores explicitly saved window positions when entering their saved
