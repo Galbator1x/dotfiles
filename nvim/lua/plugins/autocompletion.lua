@@ -14,7 +14,7 @@ require('blink.cmp').setup {
     },
   },
   completion = {
-    list = { selection = { preselect = false, auto_insert = false } }, -- Keep completion text unchanged until selection is accepted.
+    list = { selection = { preselect = false, auto_insert = true } }, -- Insert suggestions while navigating and keep the text on leaving Insert mode.
   },
   fuzzy = { implementation = 'lua' }, -- Avoid downloading a separate native matcher.
   signature = { enabled = true },
