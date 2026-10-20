@@ -43,7 +43,7 @@ key-mapping.preset = 'qwerty'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 # Restore saved floating window geometry when returning to its workspace.
-exec-on-workspace-change = ['/bin/bash', '-c', 'bash "$HOME/projects/dotfiles/scripts/window-position.sh" restore']
+# exec-on-workspace-change = ['/bin/bash', '-c', 'bash "$HOME/projects/dotfiles/scripts/window-position.sh" restore']
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
