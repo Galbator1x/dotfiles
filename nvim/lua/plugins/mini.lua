@@ -3,6 +3,9 @@ vim.pack.add {
   'https://github.com/nvim-tree/nvim-web-devicons', -- Filetype icons for mini.statusline.
 }
 
+require('mini.pairs').setup {} -- Automatically insert matching brackets and quotes.
+vim.keymap.set('i', '<C-h>', 'v:lua.MiniPairs.bs()', { expr = true, replace_keycodes = false, desc = 'Delete character or empty pair' }) -- Match Backspace behavior for Ctrl+h.
+
 require('mini.ai').setup { -- Better Around/Inside textobjects.
   n_lines = 500,
   mappings = {
