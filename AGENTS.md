@@ -14,4 +14,16 @@ Before changing behavior, investigate the cause of the reported problem and veri
 
 When editing Neovim Lua configuration, use trailing comments for explanations of a single line of code, setting, or mapping. Place comments explaining an entire block on a separate line immediately above the block.
 
-When running Neovim checks, set `NVIM_LOG_FILE` to a file in a temporary directory before startup and pass `-n -i NONE` to disable swap and ShaDa writes. For example: `check_dir=$(mktemp -d); NVIM_LOG_FILE="$check_dir/nvim.log" nvim --headless -n -i NONE -u NONE ...`. Inspect any logs needed for diagnosis, then remove the temporary directory after the check.
+For every Neovim invocation, including `nvim --version` and `nvim --help`, set `NVIM_LOG_FILE` before launching the process: even version queries can create a log before configuration loads. Use a temporary directory with cleanup on exit:
+
+```sh
+(
+  check_dir=$(mktemp -d) || exit 1
+  trap 'rm -rf "$check_dir"' EXIT
+  export NVIM_LOG_FILE="$check_dir/nvim.log"
+  nvim --headless -n -i NONE -u NONE ...
+  # Inspect any logs needed for diagnosis before leaving this subshell.
+)
+```
+
+For checks that start the editor, pass `-n -i NONE` to disable swap and ShaDa writes. Before finishing, check for generated files in the working tree and remove artifacts created by your checks.

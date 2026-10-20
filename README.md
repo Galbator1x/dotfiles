@@ -1,5 +1,20 @@
 # dotfiles
 
+## Russian Ctrl shortcuts in iTerm2
+
+Import `files/iterm2-keybindings.itermkeymap` in iTerm2 via Settings → Profiles →
+Default → Keys → Key Mappings → Presets → Import. This file includes the profile's
+existing bindings at the time it was created; export the current preset before
+reimporting it if you have since changed your shortcuts, because importing
+replaces the profile's key mappings.
+
+Russian Ctrl+letter combinations send the same control bytes as their English
+QWERTY keys. Ctrl+х and Ctrl+ъ send Ctrl+[ and Ctrl+] as well. This applies to
+every application in that iTerm2 profile, including all Neovim modes and the shell.
+Plain Russian typing and the English Ctrl shortcuts keep their usual behavior.
+Neovim's `langmap` handles plain Normal/Visual commands; no mode-dependent
+switching or separate Cyrillic Ctrl mappings are needed in Neovim.
+
 ## Codex instructions
 
 Global Codex instructions are stored in `files/codex-agents.md` and linked to

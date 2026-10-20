@@ -5,6 +5,16 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.o.spelllang = 'ru_ru,en_us'
 
+-- Keep Normal/Visual commands and mappings usable with the Russian keyboard layout.
+local ru_keys = vim.fn.split('йцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ', '\\zs')
+local en_keys = vim.fn.split([[qwertyuiop[]asdfghjkl;'zxcvbnm,.QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>]], '\\zs')
+local langmap = {}
+for i, key in ipairs(ru_keys) do
+  langmap[i] = key .. vim.fn.escape(en_keys[i], [[\,;]])
+end
+vim.opt.langmap = table.concat(langmap, ',')
+vim.opt.langremap = false -- Do not translate characters produced by mappings
+
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
