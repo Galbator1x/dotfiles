@@ -191,7 +191,10 @@ export PATH=$PATH:~/.local/bin;
 export PATH=$PATH:~/.spoofdpi/bin
 
 gch() {
- git checkout "$(git branch | fzf | tr -d '[:space:]')"
+ local branch
+ branch=$(git branch --format='%(refname:short)' | fzf) || return 0
+ [ -n "$branch" ] || return 0
+ git checkout "$branch"
 }
 
 nvim-update () {
