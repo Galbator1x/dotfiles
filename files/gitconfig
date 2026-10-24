@@ -4,8 +4,8 @@
 [core]
   pager = diff-so-fancy | less --tabs=4 -RFX
 [color "diff-highlight"]
-  oldHighlight = "red 52"
-  newHighlight = "green 22"
+  oldHighlight = "231 52"
+  newHighlight = "231 22"
 [pull]
 	rebase = false
 [push]
