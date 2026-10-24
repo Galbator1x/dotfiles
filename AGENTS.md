@@ -2,6 +2,8 @@
 
 Write commit messages in English.
 
+Unless the user specifies another destination, a request to push means pushing the current branch to its configured upstream.
+
 # Validation
 
 This is a personal dotfiles repository. Run checks appropriate to the change locally. Add CI or Git hooks only when explicitly requested.
