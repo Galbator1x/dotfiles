@@ -18,7 +18,7 @@ export PATH="$HOME/nvim-macos-arm64/bin:/opt/homebrew/bin:$PATH"
 
 ulimit -n 8192
 
-source ~/.git-prompt.sh
+source "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/bash_completion.d/git-prompt.sh"
 
 # If not running interactively, don't do anything
 case $- in
@@ -111,15 +111,9 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+# Load Homebrew's programmable completion.
+if ! shopt -oq posix && [ -r "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/profile.d/bash_completion.sh" ]; then
+  . "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/profile.d/bash_completion.sh"
 fi
 
 # If this is an xterm set more declarative titles
@@ -189,7 +183,9 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if command -v fzf >/dev/null 2>&1; then
+    eval "$(fzf --bash)"
+fi
 export PATH=$PATH:~/.local/bin;
 
 export PATH=$PATH:~/.spoofdpi/bin
