@@ -39,6 +39,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     vim.cmd 'hi GitSignsChange guibg=none'
     vim.cmd 'hi GitSignsDelete guibg=none'
 
+    if vim.o.background ~= 'light' then return end
+
     vim.cmd 'hi MiniStatuslineModeNormal guibg=#eee8d5'
     vim.cmd 'hi MiniStatuslineModeInsert guibg=#eee8d5'
     vim.cmd 'hi MiniStatuslineModeVisual guibg=#eee8d5'
