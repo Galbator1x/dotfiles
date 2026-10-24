@@ -11,6 +11,11 @@ vim.keymap.set('n', '<C-m>', function()
 end, { desc = 'NeoTree reveal', silent = true })
 
 require('neo-tree').setup {
+  window = {
+    mappings = {
+      ['<C-]>'] = function() vim.cmd.nohlsearch() end,
+    },
+  },
   filesystem = {
     bind_to_cwd = true,
     filtered_items = {
