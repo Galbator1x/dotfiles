@@ -1,6 +1,8 @@
 [user]
   name = Ivan Filimonov
-	email = ivan.filimonov@rt.ru
+	email = snake73w@gmail.com
+[includeIf "gitdir:~/projects/work/"]
+	path = ~/projects/dotfiles/files/gitconfig-work
 [core]
   pager = diff-so-fancy | less --tabs=4 -RFX
 [color "diff-highlight"]
@@ -10,3 +12,8 @@
 	rebase = false
 [push]
 	autoSetupRemote = true
+[merge]
+	conflictStyle = zdiff3
+[rerere]
+	enabled = true
+	autoupdate = false
