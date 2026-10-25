@@ -1,6 +1,18 @@
-# The following lines were added by Docker Desktop to add commands to your PATH.
-export PATH="$PATH:/Users/ivanfilimonov/.docker/bin"
-# End of Docker Desktop section.
+# Avoid registering shell integrations twice when this file is sourced again.
+[[ ${_DOTFILES_BASHRC_LOADED:-} == 1 ]] && return
+
+# Add configured paths only when they are not already inherited from the parent.
+_dotfiles_path() {
+    case ":$PATH:" in
+        *":$2:"*) return ;;
+    esac
+    if [[ $1 == prepend ]]; then
+        export PATH="$2:$PATH"
+    else
+        export PATH="$PATH:$2"
+    fi
+}
+_dotfiles_path append "$HOME/.docker/bin"
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
@@ -14,17 +26,19 @@ export VISUAL=nvim
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export LC_ALL=en_US.UTF-8
 
-export PATH="$HOME/nvim-macos-arm64/bin:/opt/homebrew/bin:$PATH"
+_dotfiles_path prepend /opt/homebrew/bin
+_dotfiles_path prepend "$HOME/nvim-macos-arm64/bin"
 
 ulimit -n 8192
-
-source "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/bash_completion.d/git-prompt.sh"
 
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
-      *) return;;
+      *) unset -f _dotfiles_path; return;;
 esac
+_DOTFILES_BASHRC_LOADED=1
+
+source "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/bash_completion.d/git-prompt.sh"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -161,14 +175,15 @@ export PS1='$(__git_ps1) \W\$ '
 
 set -o vi
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+_dotfiles_path prepend "$HOME/.rbenv/bin"
 eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+_dotfiles_path prepend "$HOME/.rbenv/plugins/ruby-build/bin"
 
 if command -v fzf >/dev/null 2>&1; then
     eval "$(fzf --bash)"
 fi
-export PATH=$PATH:~/.local/bin;
+_dotfiles_path append "$HOME/.local/bin"
+unset -f _dotfiles_path
 
 gch() {
  local branch

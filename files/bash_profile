@@ -1,0 +1,4 @@
+# Load the same configuration in login shells and interactive subshells.
+if [ -r "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+fi

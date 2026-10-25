@@ -1,5 +1,13 @@
 # dotfiles
 
+## Bash startup files
+
+`~/.bashrc` links to `files/bashrc`, and `~/.bash_profile` links to
+`files/bash_profile`, which sources `~/.bashrc`. Interactive login and non-login
+shells therefore share aliases, completion, vi mode, and shell integrations.
+The configuration avoids adding duplicate PATH entries and loading integrations
+again when sourced twice in the same shell.
+
 ## Neovim nightly updates and rollback
 
 Close running Neovim sessions before replacing their runtime files.
