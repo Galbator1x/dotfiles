@@ -9,8 +9,13 @@ vim.pack.add {
 }
 
 require('mason').setup()
-require('mason-lspconfig').setup { ensure_installed = { 'lua_ls' }, automatic_enable = false }
-require('mason-tool-installer').setup { ensure_installed = { 'stylua' } }
+require('mason-lspconfig').setup { automatic_enable = false }
+require('mason-tool-installer').setup {
+  ensure_installed = { 'lua-language-server', 'stylua' },
+  auto_update = true,
+  start_delay = 3000, -- Defer update checks until after startup.
+  debounce_hours = 24, -- Check at most once a day when Neovim starts.
+}
 -- Load plugin libraries once to avoid transient undefined globals during LuaLS workspace reloads.
 -- Preloading all plugin libraries may increase initial indexing time and memory usage.
 require('lazydev').setup {

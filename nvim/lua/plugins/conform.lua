@@ -1,7 +1,7 @@
 vim.pack.add { 'https://github.com/stevearc/conform.nvim' }
 
 require('conform').setup {
-  notify_on_error = false,
+  notify_on_error = true,
   formatters_by_ft = {
     lua = { 'stylua' },
     ruby = { 'rubocop' },
