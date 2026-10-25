@@ -127,63 +127,34 @@ if ! shopt -oq posix && [ -r "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/profile.d/ba
   . "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/profile.d/bash_completion.sh"
 fi
 
-# If this is an xterm set more declarative titles
-# "dir: last_cmd" and "actual_cmd" during execution
-# If you want to exclude a cmd from being printed see line 156
+# Show the running command, then the directory and last command, in the terminal title.
 case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\$(print_title)\a\]$PS1"
-    __el_LAST_EXECUTED_COMMAND=""
-    print_title ()
-    {
-        __el_FIRSTPART=""
-        __el_SECONDPART=""
-        if [ "$PWD" == "$HOME" ]; then
-            __el_FIRSTPART=$(gettext --domain="pantheon-files" "Home")
-        else
-            if [ "$PWD" == "/" ]; then
-                __el_FIRSTPART="/"
-            else
-                __el_FIRSTPART="${PWD##*/}"
-            fi
-        fi
-        if [[ "$__el_LAST_EXECUTED_COMMAND" == "" ]]; then
-            echo "$__el_FIRSTPART"
-            return
-        fi
-        #trim the command to the first segment and strip sudo
-        if [[ "$__el_LAST_EXECUTED_COMMAND" == sudo* ]]; then
-            __el_SECONDPART="${__el_LAST_EXECUTED_COMMAND:5}"
-            __el_SECONDPART="${__el_SECONDPART%% *}"
-        else
-            __el_SECONDPART="${__el_LAST_EXECUTED_COMMAND%% *}"
-        fi
-        printf "%s: %s" "$__el_FIRSTPART" "$__el_SECONDPART"
-    }
-    put_title()
-    {
-        __el_LAST_EXECUTED_COMMAND="$1"
-        printf "\033]0;%s\007" "$1"
-    }
+    xterm*|rxvt*)
+        terminal_title_command=""
 
-    # Show the currently running command in the terminal title:
-    # http://www.davidpashley.com/articles/xterm-titles-with-bash.html
-    update_tab_command()
-    {
-        # catch blacklisted commands and nested escapes
-        case "$1" in
-            *\033]0*|update_*|echo*|printf*|clear*|cd*)
-            __el_LAST_EXECUTED_COMMAND=""
-                ;;
-            *)
-            put_title "$1"
-            ;;
-        esac
-    }
-    preexec_functions+=(update_tab_command)
-    ;;
-*)
-    ;;
+        set_terminal_command_title() {
+            local command=$1
+            command=${command//[$'\001'-$'\037'$'\177']/} # Strip terminal control characters.
+            terminal_title_command=${command#sudo }
+            terminal_title_command=${terminal_title_command%% *}
+            printf '\033]0;%s\007' "$command"
+        }
+
+        set_terminal_prompt_title() {
+            local directory=${PWD##*/}
+            [[ $PWD == "$HOME" ]] && directory='~'
+            [[ $PWD == / ]] && directory=/
+            directory=${directory//[$'\001'-$'\037'$'\177']/}
+            printf '\033]0;%s\007' "${directory}${terminal_title_command:+: $terminal_title_command}"
+        }
+
+        if [[ " ${preexec_functions[*]} " != *" set_terminal_command_title "* ]]; then
+            preexec_functions+=(set_terminal_command_title)
+        fi
+        if [[ " ${precmd_functions[*]} " != *" set_terminal_prompt_title "* ]]; then
+            precmd_functions+=(set_terminal_prompt_title)
+        fi
+        ;;
 esac
 
 export PS1='$(__git_ps1) \W\$ '
