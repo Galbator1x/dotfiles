@@ -151,7 +151,7 @@ xterm*|rxvt*)
     }
     put_title()
     {
-        __el_LAST_EXECUTED_COMMAND="${BASH_COMMAND}"
+        __el_LAST_EXECUTED_COMMAND="$1"
         printf "\033]0;%s\007" "$1"
     }
 
@@ -160,12 +160,12 @@ xterm*|rxvt*)
     update_tab_command()
     {
         # catch blacklisted commands and nested escapes
-        case "$BASH_COMMAND" in
+        case "$1" in
             *\033]0*|update_*|echo*|printf*|clear*|cd*)
             __el_LAST_EXECUTED_COMMAND=""
                 ;;
             *)
-            put_title "${BASH_COMMAND}"
+            put_title "$1"
             ;;
         esac
     }
@@ -255,4 +255,9 @@ if [ -z "${_mise_cmd_not_found:-}" ]; then
             return 127
         fi
     }
+fi
+
+# Use iTerm2's bundled integration so it updates with the app.
+if [[ ${TERM_PROGRAM:-} == iTerm.app ]] && [ -r /Applications/iTerm.app/Contents/Resources/iterm2_shell_integration.bash ]; then
+    source /Applications/iTerm.app/Contents/Resources/iterm2_shell_integration.bash
 fi
