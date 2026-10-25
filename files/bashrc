@@ -22,7 +22,10 @@ export LC_ALL=en_US.UTF-8
 _dotfiles_path prepend /opt/homebrew/bin
 _dotfiles_path prepend "$HOME/nvim-macos-arm64/bin"
 
-ulimit -n 8192
+# Raise the soft open-file limit without lowering an existing higher limit.
+if [[ $(ulimit -Sn) != unlimited ]] && (( $(ulimit -Sn) < 8192 )); then
+    ulimit -Sn 8192
+fi
 
 # If not running interactively, don't do anything
 case $- in
@@ -55,7 +58,7 @@ fi
 
 # Prompt and completion.
 source "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/bash_completion.d/git-prompt.sh"
-export PS1='$(__git_ps1) \W\$ '
+PS1='$(__git_ps1) \W\$ '
 
 # Load Homebrew's programmable completion.
 if ! shopt -oq posix && [[ -r "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/profile.d/bash_completion.sh" ]]; then
