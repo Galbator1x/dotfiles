@@ -27,22 +27,20 @@ ulimit -n 8192
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
-      *) unset -f _dotfiles_path; return;;
+    *)
+        unset -f _dotfiles_path
+        return
+        ;;
 esac
 _DOTFILES_BASHRC_LOADED=1
 
-source "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/bash_completion.d/git-prompt.sh"
-
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
+# History and interactive shell options.
 HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
 HISTFILESIZE=20000
+shopt -s histappend checkwinsize
+set -o vi
 
 # Share new history entries between open Bash sessions before each prompt.
 sync_bash_history() {
@@ -55,51 +53,38 @@ if [[ " ${precmd_functions[*]} " != *" sync_bash_history "* ]]; then
     precmd_functions+=(sync_bash_history)
 fi
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+# Prompt and completion.
+source "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/bash_completion.d/git-prompt.sh"
+export PS1='$(__git_ps1) \W\$ '
 
 # Load Homebrew's programmable completion.
-if ! shopt -oq posix && [ -r "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/profile.d/bash_completion.sh" ]; then
-  . "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/profile.d/bash_completion.sh"
+if ! shopt -oq posix && [[ -r "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/profile.d/bash_completion.sh" ]]; then
+    source "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/profile.d/bash_completion.sh"
 fi
+
+# Aliases and helper functions.
+if [[ -f "$HOME/.bash_aliases" ]]; then
+    source "$HOME/.bash_aliases"
+fi
+
+gch() {
+    local branch
+    branch=$(git branch --format='%(refname:short)' | fzf) || return 0
+    [[ -n "$branch" ]] || return 0
+    git checkout "$branch"
+}
+
+nvim-update() {
+    python3 "$HOME/projects/dotfiles/scripts/nvim-manager.py" update "$@"
+}
+
+nvim-rollback() {
+    python3 "$HOME/projects/dotfiles/scripts/nvim-manager.py" rollback "$@"
+}
+
+nvim-versions() {
+    python3 "$HOME/projects/dotfiles/scripts/nvim-manager.py" list
+}
 
 # Show the running command, then the directory and last command, in the terminal title.
 case "$TERM" in
@@ -131,10 +116,7 @@ case "$TERM" in
         ;;
 esac
 
-export PS1='$(__git_ps1) \W\$ '
-
-set -o vi
-
+# Tool integrations.
 _dotfiles_path prepend "$HOME/.rbenv/bin"
 eval "$(rbenv init -)"
 _dotfiles_path prepend "$HOME/.rbenv/plugins/ruby-build/bin"
@@ -145,32 +127,13 @@ fi
 _dotfiles_path append "$HOME/.local/bin"
 unset -f _dotfiles_path
 
-gch() {
- local branch
- branch=$(git branch --format='%(refname:short)' | fzf) || return 0
- [ -n "$branch" ] || return 0
- git checkout "$branch"
-}
-
-nvim-update () {
-    python3 "$HOME/projects/dotfiles/scripts/nvim-manager.py" update "$@"
-}
-
-nvim-rollback () {
-    python3 "$HOME/projects/dotfiles/scripts/nvim-manager.py" rollback "$@"
-}
-
-nvim-versions () {
-    python3 "$HOME/projects/dotfiles/scripts/nvim-manager.py" list
-}
-
 # Keep Ruby managed by rbenv until the migration to mise.
 export MISE_DISABLE_TOOLS=ruby
 if command -v mise >/dev/null 2>&1; then
     eval "$(command mise activate bash)"
 fi
 
-# Use iTerm2's bundled integration so it updates with the app.
-if [[ ${TERM_PROGRAM:-} == iTerm.app ]] && [ -r /Applications/iTerm.app/Contents/Resources/iterm2_shell_integration.bash ]; then
+# iTerm2 bundles bash-preexec, which runs the history and title hooks above.
+if [[ ${TERM_PROGRAM:-} == iTerm.app ]] && [[ -r /Applications/iTerm.app/Contents/Resources/iterm2_shell_integration.bash ]]; then
     source /Applications/iTerm.app/Contents/Resources/iterm2_shell_integration.bash
 fi

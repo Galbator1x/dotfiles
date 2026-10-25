@@ -4,6 +4,10 @@ alias vi='nvim'
 alias vim='nvim'
 alias r='bin/rails'
 
+alias ll='ls -lahF'
+alias la='ls -A'
+alias l='ls -CF'
+
 alias d='docker'
 alias dc='docker compose'
 alias dm='docker-machine'
