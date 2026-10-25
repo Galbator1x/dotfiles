@@ -1,5 +1,31 @@
 # dotfiles
 
+## Neovim nightly updates and rollback
+
+Close running Neovim sessions before replacing their runtime files.
+
+- `nvim-update` downloads and checks the nightly in a temporary directory before
+  replacing `~/nvim-macos-arm64`. A failed replacement restores the previous install.
+- `nvim-versions` lists the current version and backups, newest saved first.
+- `nvim-rollback` swaps the current installation with the most recently saved backup.
+  Pass a version or its directory name to select another backup.
+
+Backups live in `~/nvim-backups/nvim-<full-version>`, with at most five previous
+versions plus the current installation. Duplicate versions are not saved twice;
+updating to the current version does nothing. Old backups are pruned only after
+a successful switch. Rollback also saves the installation being replaced.
+Existing manually saved directories outside `nvim-backups` are left untouched.
+Plugins, Mason packages, parsers, and configuration are not included in backups.
+If a switch is interrupted, `.previous` inside `nvim-backups` preserves the old
+installation, and `.lock` prevents concurrent operations. Inspect these recovery
+files before retrying; do not delete `.previous` without recovering its contents.
+
+Run isolated checks without downloading or replacing the real editor:
+
+```sh
+python3 -B scripts/tests/test_nvim_manager.py
+```
+
 ## Russian Ctrl shortcuts in iTerm2
 
 Import `files/iterm2-keybindings.itermkeymap` in iTerm2 via Settings → Profiles →

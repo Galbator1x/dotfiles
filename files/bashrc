@@ -178,11 +178,15 @@ gch() {
 }
 
 nvim-update () {
-    cd ~
-    curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos-arm64.tar.gz
-    rm -rf nvim-macos-arm64
-    tar xzf nvim-macos-arm64.tar.gz
-    rm nvim-macos-arm64.tar.gz
+    python3 "$HOME/projects/dotfiles/scripts/nvim-manager.py" update "$@"
+}
+
+nvim-rollback () {
+    python3 "$HOME/projects/dotfiles/scripts/nvim-manager.py" rollback "$@"
+}
+
+nvim-versions () {
+    python3 "$HOME/projects/dotfiles/scripts/nvim-manager.py" list
 }
 
 # Keep Ruby managed by rbenv until the migration to mise.
