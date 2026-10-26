@@ -13,7 +13,7 @@ end, { desc = 'NeoTree reveal', silent = true })
 require('neo-tree').setup {
   window = {
     mappings = {
-      ['<C-]>'] = function() vim.cmd.nohlsearch() end,
+      ['<esc>'] = 'none', -- Let the global nohlsearch mapping handle Esc sent by Ctrl+].
     },
   },
   filesystem = {
